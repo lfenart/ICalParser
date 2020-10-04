@@ -142,6 +142,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ICalParser.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Node.ixx" />
+    <ClCompile Include="NodeFactory.cpp" />
+    <ClCompile Include="NodeFactory.ixx" />
+    <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="Parser.ixx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

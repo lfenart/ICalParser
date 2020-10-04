@@ -13,10 +13,40 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers sources\parser">
+      <UniqueIdentifier>{aeb611a9-746d-499b-9c6f-653a7b7d0cfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\ast">
+      <UniqueIdentifier>{1d90449f-6066-4052-ba7b-0124c83038f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\ast">
+      <UniqueIdentifier>{962a85f4-df6d-40cf-8df8-534ebacfac03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\parser">
+      <UniqueIdentifier>{fbe6f76a-8a1c-44fd-bf6f-8c4813960531}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ICalParser.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Fichiers sources\ast</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.ixx">
+      <Filter>Fichiers d%27en-tête\ast</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser.ixx">
+      <Filter>Fichiers d%27en-tête\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeFactory.ixx">
+      <Filter>Fichiers d%27en-tête\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeFactory.cpp">
+      <Filter>Fichiers sources\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser.cpp">
+      <Filter>Fichiers sources\parser</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

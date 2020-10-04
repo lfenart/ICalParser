@@ -1,5 +1,6 @@
+module Parser;
+
 import std.core;
-import Parser;
 import NodeFactory;
 
 namespace parser {

@@ -1,5 +1,6 @@
+module CalendarParser;
+
 import std.core;
-import CalendarParser;
 import Node;
 
 namespace parser {

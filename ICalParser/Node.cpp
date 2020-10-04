@@ -1,5 +1,6 @@
+module Node;
+
 import std.core;
-import Node;
 
 namespace ast {
 

@@ -1,5 +1,6 @@
+module NodeFactory;
+
 import std.core;
-import NodeFactory;
 import Node;
 import NodeCalendar;
 

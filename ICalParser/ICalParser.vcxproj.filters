@@ -48,5 +48,14 @@
     <ClCompile Include="Parser.cpp">
       <Filter>Fichiers sources\parser</Filter>
     </ClCompile>
+    <ClCompile Include="CalendarParser.ixx">
+      <Filter>Fichiers d%27en-tête\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="CalendarParser.cpp">
+      <Filter>Fichiers sources\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeCalendar.ixx">
+      <Filter>Fichiers d%27en-tête\ast</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

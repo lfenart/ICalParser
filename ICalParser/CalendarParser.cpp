@@ -1,7 +1,7 @@
-module CalendarParser;
+module Parser;
 
 import std.core;
-import Node;
+import Ast;
 
 namespace parser {
 

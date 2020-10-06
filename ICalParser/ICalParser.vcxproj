@@ -141,13 +141,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CalendarParser.ixx" />
+    <ClCompile Include="Ast.ixx" />
     <ClCompile Include="ICalParser.cpp" />
     <ClCompile Include="Node.cpp" />
-    <ClCompile Include="Node.ixx" />
-    <ClCompile Include="NodeCalendar.ixx" />
     <ClCompile Include="NodeFactory.cpp" />
-    <ClCompile Include="NodeFactory.ixx" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Parser.ixx" />
     <ClCompile Include="CalendarParser.cpp" />

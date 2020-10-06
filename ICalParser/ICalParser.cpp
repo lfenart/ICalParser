@@ -1,6 +1,6 @@
 import std.core;
 import std.regex;
-import CalendarParser;
+import Parser;
 
 std::regex folded_line("\n\\s");
 

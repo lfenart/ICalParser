@@ -1,4 +1,4 @@
-export module Node;
+export module Ast;
 
 import std.core;
 
@@ -11,6 +11,9 @@ public:
 
 private:
 	std::vector<std::unique_ptr<Node>> children;
+};
+
+export class NodeCalendar : public Node {
 };
 
 }

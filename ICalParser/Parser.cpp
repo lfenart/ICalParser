@@ -1,7 +1,7 @@
 module Parser;
 
 import std.core;
-import NodeFactory;
+import Ast;
 
 namespace parser {
 

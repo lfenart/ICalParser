@@ -1,4 +1,4 @@
-module Node;
+module Ast;
 
 import std.core;
 

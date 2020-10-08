@@ -1,37 +1,32 @@
+module Parser;
+
 import std.core;
-import std.regex;
-import Parser;
 
-std::regex folded_line("\n\\s");
+namespace parser {
 
-std::string read_file(const char* path)
+std::unique_ptr<ast::Node> ICalParser::parse(std::istream& input) const
 {
-	std::ifstream input_file(path);
-	if (!input_file.is_open()) {
-		throw "Could not open file";
+	std::unique_ptr<ast::NodeICal> node = get_factory().create_node_ical();
+	try {
+		std::string line;
+		while (std::getline(input, line)) {
+			auto pos = line.find(":");
+			if (pos == std::string::npos) {
+				std::cerr << "':' not found, skipping line" << std::endl;
+				continue;
+			}
+			std::string token1 = line.substr(0, pos);
+			std::string token2 = line.substr(pos + 1);
+			if (std::strcmp("BEGIN", token1.c_str()) != 0 || std::strcmp("VCALENDAR", token2.c_str()) != 0) {
+				throw "";
+			}
+			std::unique_ptr<ast::Node> calendar = calendarParser.parse(input);
+			node->add_calendar(std::unique_ptr<ast::NodeCalendar>(dynamic_cast<ast::NodeCalendar*>(calendar.release())));
+		}
+	} catch (std::string e) {
+		std::cerr << "Exception: " << e << std::endl;
 	}
-	std::string input;
-	input.assign((std::istreambuf_iterator<char>(input_file)),
-		(std::istreambuf_iterator<char>()));
-	input_file.close();
-	return input;
+	return node;
 }
 
-void remove_folded_lines(std::string& input)
-{
-	input = std::regex_replace(input, folded_line, "");
-}
-
-int main(int argc, char* argv[])
-{
-	if (argc < 2) {
-		std::cerr << "Not enough arguments" << std::endl;
-		return 1;
-	}
-	std::string input = read_file(argv[1]);
-	remove_folded_lines(input);
-	std::stringstream ss(input);
-	parser::CalendarParser parser;
-	auto node = parser.parse(ss);
-	return 0;
 }

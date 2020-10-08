@@ -143,11 +143,15 @@
   <ItemGroup>
     <ClCompile Include="Ast.ixx" />
     <ClCompile Include="ICalParser.cpp" />
-    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="NodeCalendar.cpp" />
+    <ClCompile Include="NodeComponent.cpp" />
     <ClCompile Include="NodeFactory.cpp" />
+    <ClCompile Include="NodeICal.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Parser.ixx" />
     <ClCompile Include="CalendarParser.cpp" />
+    <ClCompile Include="UnknownComponentParser.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

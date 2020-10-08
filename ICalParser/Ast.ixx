@@ -4,16 +4,48 @@ import std.core;
 
 namespace ast {
 
-export class Node {
-public:
-	const std::vector<std::unique_ptr<Node>>& get_children() const;
-	void add_child(std::unique_ptr<Node>);
+export class Node;
+export class NodeICal;
+export class NodeCalendar;
+export class NodeComponent;
+export class NodeUnknownComponent;
 
-private:
-	std::vector<std::unique_ptr<Node>> children;
+class Node {
+public:
+	virtual ~Node() = default;
 };
 
-export class NodeCalendar : public Node {
+class NodeICal : public Node {
+public:
+	NodeICal() = default;
+	virtual ~NodeICal() = default;
+
+	const std::vector<std::unique_ptr<NodeCalendar>>& get_calendars() const;
+	void add_calendar(std::unique_ptr<NodeCalendar>);
+
+private:
+	std::vector<std::unique_ptr<NodeCalendar>> calendars;
+};
+
+class NodeCalendar : public Node {
+public:
+	NodeCalendar() = default;
+	virtual ~NodeCalendar() = default;
+
+	const std::vector<std::unique_ptr<NodeComponent>>& get_components() const;
+
+private:
+	std::vector<std::unique_ptr<NodeComponent>> components;
+};
+
+class NodeComponent : public Node {
+public:
+	virtual ~NodeComponent() = default;
+
+	const std::vector<std::unique_ptr<NodeComponent>>& get_components() const;
+
+private:
+	std::vector<std::unique_ptr<NodeComponent>> components;
 };
 
 }

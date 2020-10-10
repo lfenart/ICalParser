@@ -118,6 +118,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalOptions>/stdIfcDir "$(VC_IFCPath)" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,8 +146,8 @@
     <ClCompile Include="Ast.ixx" />
     <ClCompile Include="ICalParser.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="NodeCalendar.cpp" />
-    <ClCompile Include="NodeComponent.cpp" />
+    <ClCompile Include="VCalendar.cpp" />
+    <ClCompile Include="VComponent.cpp" />
     <ClCompile Include="NodeFactory.cpp" />
     <ClCompile Include="NodeICal.cpp" />
     <ClCompile Include="Parser.cpp" />

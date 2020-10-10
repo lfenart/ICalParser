@@ -21,7 +21,7 @@ std::unique_ptr<ast::Node> ICalParser::parse(std::istream& input) const
 				throw "";
 			}
 			std::unique_ptr<ast::Node> calendar = calendarParser.parse(input);
-			node->add_calendar(std::unique_ptr<ast::NodeCalendar>(dynamic_cast<ast::NodeCalendar*>(calendar.release())));
+			node->add_calendar(std::unique_ptr<ast::VCalendar>(dynamic_cast<ast::VCalendar*>(calendar.release())));
 		}
 	} catch (std::string e) {
 		std::cerr << "Exception: " << e << std::endl;

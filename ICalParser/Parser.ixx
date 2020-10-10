@@ -14,7 +14,7 @@ class UnknownComponentParser;
 
 class NodeFactory {
 public:
-	std::unique_ptr<ast::NodeCalendar> create_node_calendar() const;
+	std::unique_ptr<ast::VCalendar> create_node_calendar() const;
 	std::unique_ptr<ast::NodeICal> create_node_ical() const;
 };
 

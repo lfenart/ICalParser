@@ -39,12 +39,6 @@
     <ClCompile Include="Ast.ixx">
       <Filter>Fichiers sources\ast</Filter>
     </ClCompile>
-    <ClCompile Include="NodeComponent.cpp">
-      <Filter>Fichiers sources\ast</Filter>
-    </ClCompile>
-    <ClCompile Include="NodeCalendar.cpp">
-      <Filter>Fichiers sources\ast</Filter>
-    </ClCompile>
     <ClCompile Include="UnknownComponentParser.cpp">
       <Filter>Fichiers sources\parser</Filter>
     </ClCompile>
@@ -58,6 +52,12 @@
       <Filter>Fichiers sources\parser</Filter>
     </ClCompile>
     <ClCompile Include="NodeICal.cpp">
+      <Filter>Fichiers sources\ast</Filter>
+    </ClCompile>
+    <ClCompile Include="VCalendar.cpp">
+      <Filter>Fichiers sources\ast</Filter>
+    </ClCompile>
+    <ClCompile Include="VComponent.cpp">
       <Filter>Fichiers sources\ast</Filter>
     </ClCompile>
   </ItemGroup>

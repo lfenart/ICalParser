@@ -6,8 +6,8 @@ namespace ast {
 
 export class Node;
 export class NodeICal;
-export class NodeCalendar;
-export class NodeComponent;
+export class VCalendar;
+export class VComponent;
 export class NodeUnknownComponent;
 
 class Node {
@@ -20,32 +20,32 @@ public:
 	NodeICal() = default;
 	virtual ~NodeICal() = default;
 
-	const std::vector<std::unique_ptr<NodeCalendar>>& get_calendars() const;
-	void add_calendar(std::unique_ptr<NodeCalendar>);
+	const std::vector<std::unique_ptr<VCalendar>>& get_calendars() const;
+	void add_calendar(std::unique_ptr<VCalendar>);
 
 private:
-	std::vector<std::unique_ptr<NodeCalendar>> calendars;
+	std::vector<std::unique_ptr<VCalendar>> calendars;
 };
 
-class NodeCalendar : public Node {
+class VCalendar : public Node {
 public:
-	NodeCalendar() = default;
-	virtual ~NodeCalendar() = default;
+	VCalendar() = default;
+	virtual ~VCalendar() = default;
 
-	const std::vector<std::unique_ptr<NodeComponent>>& get_components() const;
+	const std::vector<std::unique_ptr<VComponent>>& get_components() const;
 
 private:
-	std::vector<std::unique_ptr<NodeComponent>> components;
+	std::vector<std::unique_ptr<VComponent>> components;
 };
 
-class NodeComponent : public Node {
+class VComponent : public Node {
 public:
-	virtual ~NodeComponent() = default;
+	virtual ~VComponent() = default;
 
-	const std::vector<std::unique_ptr<NodeComponent>>& get_components() const;
+	const std::vector<std::unique_ptr<VComponent>>& get_components() const;
 
 private:
-	std::vector<std::unique_ptr<NodeComponent>> components;
+	std::vector<std::unique_ptr<VComponent>> components;
 };
 
 }

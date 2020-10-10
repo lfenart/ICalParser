@@ -51,13 +51,13 @@
     <ClCompile Include="Parser.cpp">
       <Filter>Fichiers sources\parser</Filter>
     </ClCompile>
-    <ClCompile Include="NodeICal.cpp">
-      <Filter>Fichiers sources\ast</Filter>
-    </ClCompile>
     <ClCompile Include="VCalendar.cpp">
       <Filter>Fichiers sources\ast</Filter>
     </ClCompile>
     <ClCompile Include="VComponent.cpp">
+      <Filter>Fichiers sources\ast</Filter>
+    </ClCompile>
+    <ClCompile Include="ICal.cpp">
       <Filter>Fichiers sources\ast</Filter>
     </ClCompile>
   </ItemGroup>

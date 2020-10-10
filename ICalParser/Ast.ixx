@@ -5,20 +5,19 @@ import std.core;
 namespace ast {
 
 export class Node;
-export class NodeICal;
+export class ICal;
 export class VCalendar;
 export class VComponent;
-export class NodeUnknownComponent;
 
 class Node {
 public:
 	virtual ~Node() = default;
 };
 
-class NodeICal : public Node {
+class ICal : public Node {
 public:
-	NodeICal() = default;
-	virtual ~NodeICal() = default;
+	ICal() = default;
+	virtual ~ICal() = default;
 
 	const std::vector<std::unique_ptr<VCalendar>>& get_calendars() const;
 	void add_calendar(std::unique_ptr<VCalendar>);

@@ -6,7 +6,7 @@ namespace parser {
 
 std::unique_ptr<ast::Node> ICalParser::parse(std::istream& input) const
 {
-	std::unique_ptr<ast::NodeICal> node = get_factory().create_node_ical();
+	std::unique_ptr<ast::ICal> node = get_factory().create_node_ical();
 	try {
 		std::string line;
 		while (std::getline(input, line)) {

@@ -10,9 +10,9 @@ std::unique_ptr<ast::VCalendar> NodeFactory::create_node_calendar() const
 	return std::make_unique<ast::VCalendar>();
 }
 
-std::unique_ptr<ast::NodeICal> NodeFactory::create_node_ical() const
+std::unique_ptr<ast::ICal> NodeFactory::create_node_ical() const
 {
-	return std::make_unique<ast::NodeICal>();
+	return std::make_unique<ast::ICal>();
 }
 
 }

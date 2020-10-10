@@ -5,9 +5,9 @@ import Ast;
 
 namespace parser {
 
-std::unique_ptr<ast::Node> CalendarParser::parse(std::istream& input) const
+ast::Node::uptr CalendarParser::parse(std::istream& input) const
 {
-	std::unique_ptr<ast::Node> node = get_factory().create_node_calendar();
+	ast::Node::uptr node = get_factory().create_node_calendar();
 	std::string line;
 	for (;;) {
 		if (!std::getline(input, line)) {

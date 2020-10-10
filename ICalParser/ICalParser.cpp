@@ -4,9 +4,9 @@ import std.core;
 
 namespace parser {
 
-std::unique_ptr<ast::Node> ICalParser::parse(std::istream& input) const
+ast::Node::uptr ICalParser::parse(std::istream& input) const
 {
-	std::unique_ptr<ast::ICal> node = get_factory().create_node_ical();
+	ast::ICal::uptr node = get_factory().create_node_ical();
 	try {
 		std::string line;
 		while (std::getline(input, line)) {
@@ -20,8 +20,8 @@ std::unique_ptr<ast::Node> ICalParser::parse(std::istream& input) const
 			if (std::strcmp("BEGIN", token1.c_str()) != 0 || std::strcmp("VCALENDAR", token2.c_str()) != 0) {
 				throw "";
 			}
-			std::unique_ptr<ast::Node> calendar = calendarParser.parse(input);
-			node->add_calendar(std::unique_ptr<ast::VCalendar>(dynamic_cast<ast::VCalendar*>(calendar.release())));
+			ast::Node::uptr calendar = calendarParser.parse(input);
+			node->add_calendar(ast::VCalendar::uptr(dynamic_cast<ast::VCalendar*>(calendar.release())));
 		}
 	} catch (std::string e) {
 		std::cerr << "Exception: " << e << std::endl;

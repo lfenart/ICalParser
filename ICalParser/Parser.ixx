@@ -14,15 +14,15 @@ class UnknownComponentParser;
 
 class NodeFactory {
 public:
-	std::unique_ptr<ast::VCalendar> create_node_calendar() const;
-	std::unique_ptr<ast::ICal> create_node_ical() const;
+	ast::VCalendar::uptr create_node_calendar() const;
+	ast::ICal::uptr create_node_ical() const;
 };
 
 class Parser {
 public:
 	virtual ~Parser() = default;
 
-	virtual std::unique_ptr<ast::Node> parse(std::istream&) const = 0;
+	virtual ast::Node::uptr parse(std::istream&) const = 0;
 
 protected:
 	const NodeFactory& get_factory() const;
@@ -46,7 +46,7 @@ public:
 	CalendarParser() = default;
 	virtual ~CalendarParser() = default;
 
-	std::unique_ptr<ast::Node> parse(std::istream&) const override;
+	ast::Node::uptr parse(std::istream&) const override;
 
 private:
 	UnknownComponentParser unknownComponentParser;
@@ -57,7 +57,7 @@ public:
 	ICalParser() = default;
 	virtual ~ICalParser() = default;
 
-	std::unique_ptr<ast::Node> parse(std::istream&) const override;
+	ast::Node::uptr parse(std::istream&) const override;
 
 private:
 	CalendarParser calendarParser;

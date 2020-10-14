@@ -26,19 +26,13 @@ public:
 
 protected:
 	const NodeFactory& get_factory() const;
+	void parse_unknown_component(std::istream&, const char*) const;
 
 private:
 	NodeFactory factory;
 };
 
-class UnknownComponentParser {
-public:
-	void parse(std::istream&, const char*) const;
-};
-
 class ComponentParser : public Parser {
-private:
-	UnknownComponentParser unknownComponentParser;
 };
 
 class CalendarParser : public Parser {
@@ -47,9 +41,6 @@ public:
 	virtual ~CalendarParser() = default;
 
 	ast::Node::uptr parse(std::istream&) const override;
-
-private:
-	UnknownComponentParser unknownComponentParser;
 };
 
 class ICalParser : public Parser {

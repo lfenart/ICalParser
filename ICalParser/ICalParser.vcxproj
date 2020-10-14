@@ -153,7 +153,6 @@
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Parser.ixx" />
     <ClCompile Include="CalendarParser.cpp" />
-    <ClCompile Include="UnknownComponentParser.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

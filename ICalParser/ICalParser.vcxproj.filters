@@ -39,9 +39,6 @@
     <ClCompile Include="Ast.ixx">
       <Filter>Fichiers sources\ast</Filter>
     </ClCompile>
-    <ClCompile Include="UnknownComponentParser.cpp">
-      <Filter>Fichiers sources\parser</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>

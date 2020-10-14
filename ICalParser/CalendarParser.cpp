@@ -29,7 +29,7 @@ ast::Node::uptr CalendarParser::parse(std::istream& input) const
 		if (std::strcmp("BEGIN", token1.c_str()) == 0) {
 			// TODO
 			std::cerr << "Skipping unknown component: " << token2 << std::endl;
-			unknownComponentParser.parse(input, token2.c_str());
+			parse_unknown_component(input, token2.c_str());
 		} else {
 			// TODO
 			std::cerr << "Skipping unknown property: " << token1 << std::endl;

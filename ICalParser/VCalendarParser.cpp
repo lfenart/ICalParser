@@ -5,7 +5,7 @@ import Ast;
 
 namespace parser {
 
-ast::Node::uptr CalendarParser::parse(std::istream& input) const
+ast::Node::uptr VCalendarParser::parse(std::istream& input) const
 {
 	ast::Node::uptr node = get_factory().create_node_calendar();
 	std::string line;

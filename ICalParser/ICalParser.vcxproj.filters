@@ -27,12 +27,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="NodeFactory.cpp">
-      <Filter>Fichiers sources\parser</Filter>
-    </ClCompile>
-    <ClCompile Include="CalendarParser.cpp">
-      <Filter>Fichiers sources\parser</Filter>
-    </ClCompile>
     <ClCompile Include="Parser.ixx">
       <Filter>Fichiers sources\parser</Filter>
     </ClCompile>
@@ -48,14 +42,17 @@
     <ClCompile Include="Parser.cpp">
       <Filter>Fichiers sources\parser</Filter>
     </ClCompile>
-    <ClCompile Include="VCalendar.cpp">
-      <Filter>Fichiers sources\ast</Filter>
-    </ClCompile>
     <ClCompile Include="VComponent.cpp">
       <Filter>Fichiers sources\ast</Filter>
     </ClCompile>
     <ClCompile Include="ICal.cpp">
       <Filter>Fichiers sources\ast</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeFactory.cpp">
+      <Filter>Fichiers sources\ast</Filter>
+    </ClCompile>
+    <ClCompile Include="VCalendarParser.cpp">
+      <Filter>Fichiers sources\parser</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

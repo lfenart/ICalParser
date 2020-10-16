@@ -4,7 +4,7 @@ import std.core;
 
 namespace parser {
 
-const NodeFactory& Parser::get_factory() const
+const ast::NodeFactory& Parser::get_factory() const
 {
 	return factory;
 }

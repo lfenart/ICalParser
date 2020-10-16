@@ -4,7 +4,7 @@ import std.core;
 
 namespace ast {
 
-const std::vector<VComponent::uptr>& VComponent::get_components() const
+const std::vector<Component::uptr>& Component::get_components() const
 {
 	return components;
 }

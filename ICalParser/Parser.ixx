@@ -3,20 +3,13 @@ export module Parser;
 import std.core;
 import Ast;
 
-export namespace parser {
+namespace parser {
 
-class NodeFactory;
-class Parser;
-class ICalParser;
-class CalendarParser;
-class ComponentParser;
-class UnknownComponentParser;
-
-class NodeFactory {
-public:
-	ast::VCalendar::uptr create_node_calendar() const;
-	ast::ICal::uptr create_node_ical() const;
-};
+export class Parser;
+export class ICalParser;
+export class CalendarParser;
+export class ComponentParser;
+export class UnknownComponentParser;
 
 class Parser {
 public:
@@ -25,20 +18,20 @@ public:
 	virtual ast::Node::uptr parse(std::istream&) const = 0;
 
 protected:
-	const NodeFactory& get_factory() const;
+	const ast::NodeFactory& get_factory() const;
 	void parse_unknown_component(std::istream&, const char*) const;
 
 private:
-	NodeFactory factory;
+	ast::NodeFactory factory;
 };
 
 class ComponentParser : public Parser {
 };
 
-class CalendarParser : public Parser {
+class VCalendarParser : public ComponentParser {
 public:
-	CalendarParser() = default;
-	virtual ~CalendarParser() = default;
+	VCalendarParser() = default;
+	virtual ~VCalendarParser() = default;
 
 	ast::Node::uptr parse(std::istream&) const override;
 };
@@ -51,7 +44,7 @@ public:
 	ast::Node::uptr parse(std::istream&) const override;
 
 private:
-	CalendarParser calendarParser;
+	VCalendarParser calendar_parser;
 };
 
 }

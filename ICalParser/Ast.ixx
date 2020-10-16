@@ -7,7 +7,8 @@ namespace ast {
 export class Node;
 export class ICal;
 export class VCalendar;
-export class VComponent;
+export class Component;
+export class NodeFactory;
 
 class Node {
 public:
@@ -17,31 +18,26 @@ public:
 	virtual ~Node() = default;
 };
 
-class VComponent : public Node {
+class Component : public Node {
 public:
-	using sptr = std::shared_ptr<VComponent>;
-	using uptr = std::unique_ptr<VComponent>;
+	using sptr = std::shared_ptr<Component>;
+	using uptr = std::unique_ptr<Component>;
 
-	virtual ~VComponent() = default;
+	virtual ~Component() = default;
 
-	const std::vector<VComponent::uptr>& get_components() const;
+	const std::vector<Component::uptr>& get_components() const;
 
 private:
-	std::vector<VComponent::uptr> components;
+	std::vector<Component::uptr> components;
 };
 
-class VCalendar : public Node {
+class VCalendar : public Component {
 public:
 	using sptr = std::shared_ptr<VCalendar>;
 	using uptr = std::unique_ptr<VCalendar>;
 
 	VCalendar() = default;
 	virtual ~VCalendar() = default;
-
-	const std::vector<VComponent::uptr>& get_components() const;
-
-private:
-	std::vector<VComponent::uptr> components;
 };
 
 class ICal : public Node {
@@ -56,7 +52,13 @@ public:
 	void add_calendar(VCalendar::uptr);
 
 private:
-	std::vector<std::unique_ptr<VCalendar>> calendars;
+	std::vector<VCalendar::uptr> calendars;
+};
+
+class NodeFactory {
+public:
+	VCalendar::uptr create_node_calendar() const;
+	ICal::uptr create_node_ical() const;
 };
 
 }

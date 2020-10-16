@@ -20,7 +20,7 @@ ast::Node::uptr ICalParser::parse(std::istream& input) const
 			if (std::strcmp("BEGIN", token1.c_str()) != 0 || std::strcmp("VCALENDAR", token2.c_str()) != 0) {
 				throw "";
 			}
-			ast::Node::uptr calendar = calendarParser.parse(input);
+			ast::Node::uptr calendar = calendar_parser.parse(input);
 			node->add_calendar(ast::VCalendar::uptr(dynamic_cast<ast::VCalendar*>(calendar.release())));
 		}
 	} catch (std::string e) {

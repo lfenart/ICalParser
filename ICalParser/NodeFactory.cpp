@@ -15,4 +15,8 @@ ICal::uptr NodeFactory::create_node_ical() const
 	return std::make_unique<ast::ICal>();
 }
 
+VEvent::uptr NodeFactory::create_node_event() const
+{
+	return std::make_unique<ast::VEvent>();
+}
 }

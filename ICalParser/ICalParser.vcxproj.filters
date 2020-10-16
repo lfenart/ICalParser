@@ -19,12 +19,6 @@
     <Filter Include="Fichiers sources\ast">
       <UniqueIdentifier>{1d90449f-6066-4052-ba7b-0124c83038f3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\ast">
-      <UniqueIdentifier>{962a85f4-df6d-40cf-8df8-534ebacfac03}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\parser">
-      <UniqueIdentifier>{fbe6f76a-8a1c-44fd-bf6f-8c4813960531}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers sources\exception">
       <UniqueIdentifier>{1c93b08f-69b8-4c7d-8835-d598e2307b77}</UniqueIdentifier>
     </Filter>
@@ -45,9 +39,6 @@
     <ClCompile Include="Parser.cpp">
       <Filter>Fichiers sources\parser</Filter>
     </ClCompile>
-    <ClCompile Include="VComponent.cpp">
-      <Filter>Fichiers sources\ast</Filter>
-    </ClCompile>
     <ClCompile Include="ICal.cpp">
       <Filter>Fichiers sources\ast</Filter>
     </ClCompile>
@@ -56,6 +47,21 @@
     </ClCompile>
     <ClCompile Include="VCalendarParser.cpp">
       <Filter>Fichiers sources\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="VEventParser.cpp">
+      <Filter>Fichiers sources\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="VEvent.cpp">
+      <Filter>Fichiers sources\ast</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentParser.cpp">
+      <Filter>Fichiers sources\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="VAlarmParser.cpp">
+      <Filter>Fichiers sources\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="VAlarm.cpp">
+      <Filter>Fichiers sources\ast</Filter>
     </ClCompile>
     <ClCompile Include="Exception.ixx">
       <Filter>Fichiers sources\exception</Filter>
@@ -68,6 +74,9 @@
     </ClCompile>
     <ClCompile Include="UnexpectedComponentEndError.cpp">
       <Filter>Fichiers sources\exception</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Fichiers sources\ast</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

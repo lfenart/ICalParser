@@ -7,9 +7,11 @@ namespace parser {
 
 export class Parser;
 export class ICalParser;
-export class CalendarParser;
+export class VCalendarParser;
 export class ComponentParser;
 export class UnknownComponentParser;
+export class VEventParser;
+export class VAlarmParser;
 
 class Parser {
 public:
@@ -26,14 +28,43 @@ private:
 };
 
 class ComponentParser : public Parser {
+public:
+	ast::Node::uptr parse(std::istream&) const override;
+
+protected:
+	const std::map<std::string, std::unique_ptr<ComponentParser>>& get_component_parsers() const;
+	void add_component_parser(std::string add, std::unique_ptr<ComponentParser> parser);
+	virtual const char* get_name() const = 0;
+
+private:
+	std::map<std::string, std::unique_ptr<ComponentParser>> component_parsers;
 };
 
 class VCalendarParser : public ComponentParser {
 public:
-	VCalendarParser() = default;
+	VCalendarParser();
 	virtual ~VCalendarParser() = default;
 
-	ast::Node::uptr parse(std::istream&) const override;
+protected:
+	const char* get_name() const override;
+};
+
+class VEventParser : public ComponentParser {
+public:
+	VEventParser();
+	virtual ~VEventParser() = default;
+
+protected:
+	const char* get_name() const override;
+};
+
+class VAlarmParser : public ComponentParser {
+public:
+	VAlarmParser() = default;
+	virtual ~VAlarmParser() = default;
+
+protected:
+	const char* get_name() const override;
 };
 
 class ICalParser : public Parser {

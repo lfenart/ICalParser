@@ -7,6 +7,8 @@ namespace ast {
 export class Node;
 export class ICal;
 export class VCalendar;
+export class VEvent;
+export class VAlarm;
 export class Component;
 export class NodeFactory;
 
@@ -26,6 +28,7 @@ public:
 	virtual ~Component() = default;
 
 	const std::vector<Component::uptr>& get_components() const;
+	void add_component(Component::uptr);
 
 private:
 	std::vector<Component::uptr> components;
@@ -38,6 +41,24 @@ public:
 
 	VCalendar() = default;
 	virtual ~VCalendar() = default;
+};
+
+class VEvent : public Component {
+public:
+	using sptr = std::shared_ptr<VEvent>;
+	using uptr = std::unique_ptr<VEvent>;
+
+	VEvent() = default;
+	virtual ~VEvent() = default;
+};
+
+class VAlarm : public Component {
+public:
+	using sptr = std::shared_ptr<VAlarm>;
+	using uptr = std::unique_ptr<VAlarm>;
+
+	VAlarm() = default;
+	virtual ~VAlarm() = default;
 };
 
 class ICal : public Node {
@@ -59,6 +80,7 @@ class NodeFactory {
 public:
 	VCalendar::uptr create_node_calendar() const;
 	ICal::uptr create_node_ical() const;
+	VEvent::uptr create_node_event() const;
 };
 
 }

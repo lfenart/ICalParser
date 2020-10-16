@@ -25,6 +25,9 @@
     <Filter Include="Fichiers d%27en-tête\parser">
       <UniqueIdentifier>{fbe6f76a-8a1c-44fd-bf6f-8c4813960531}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\exception">
+      <UniqueIdentifier>{1c93b08f-69b8-4c7d-8835-d598e2307b77}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Parser.ixx">
@@ -53,6 +56,18 @@
     </ClCompile>
     <ClCompile Include="VCalendarParser.cpp">
       <Filter>Fichiers sources\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="Exception.ixx">
+      <Filter>Fichiers sources\exception</Filter>
+    </ClCompile>
+    <ClCompile Include="UnexpectedEofError.cpp">
+      <Filter>Fichiers sources\exception</Filter>
+    </ClCompile>
+    <ClCompile Include="MissingColonError.cpp">
+      <Filter>Fichiers sources\exception</Filter>
+    </ClCompile>
+    <ClCompile Include="UnexpectedComponentEndError.cpp">
+      <Filter>Fichiers sources\exception</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

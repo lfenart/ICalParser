@@ -1,6 +1,7 @@
 import std.core;
 import std.regex;
 import Parser;
+import Exception;
 
 std::regex folded_line("\n\\s");
 
@@ -25,13 +26,17 @@ void remove_folded_lines(std::string& input)
 int main(int argc, char* argv[])
 {
 	if (argc < 2) {
-		std::cerr << "Not enough arguments" << std::endl;
+		std::cerr << "Error: Not enough arguments" << std::endl;
 		return 1;
 	}
 	std::string input = read_file(argv[1]);
 	remove_folded_lines(input);
 	std::stringstream ss(input);
 	parser::ICalParser p;
-	auto node = p.parse(ss);
+	try {
+		auto node = p.parse(ss);
+	} catch (std::runtime_error e) {
+		std::cerr << "Error: " << e.what() << std::endl;
+	}
 	return 0;
 }

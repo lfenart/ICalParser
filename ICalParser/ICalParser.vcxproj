@@ -144,8 +144,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ast.ixx" />
+    <ClCompile Include="Exception.ixx" />
     <ClCompile Include="ICalParser.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MissingColonError.cpp" />
+    <ClCompile Include="UnexpectedComponentEndError.cpp" />
+    <ClCompile Include="UnexpectedEofError.cpp" />
     <ClCompile Include="VComponent.cpp" />
     <ClCompile Include="NodeFactory.cpp" />
     <ClCompile Include="ICal.cpp" />

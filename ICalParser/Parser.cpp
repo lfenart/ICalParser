@@ -1,6 +1,7 @@
 module Parser;
 
 import std.core;
+import Exception;
 
 namespace parser {
 
@@ -14,7 +15,7 @@ void Parser::parse_unknown_component(std::istream& input, const char* name) cons
 	for (;;) {
 		std::string line;
 		if (!std::getline(input, line)) {
-			throw "eof";
+			throw exception::UnexpectedEofError();
 		}
 		auto pos = line.find(":");
 		if (pos == std::string::npos) {

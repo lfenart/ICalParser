@@ -8,7 +8,7 @@ namespace parser {
 
 ast::Node::uptr ComponentParser::parse(std::istream& input) const
 {
-	ast::Component::uptr node = get_factory().create_node_calendar();
+	ast::Component::uptr node = create_node();
 	std::string line;
 	for (;;) {
 		if (!std::getline(input, line)) {
@@ -28,7 +28,7 @@ ast::Node::uptr ComponentParser::parse(std::istream& input) const
 		}
 		if (std::strcmp("BEGIN", token1.c_str()) == 0) {
 			try {
-				auto child = get_component_parsers().at(token2)->parse(input);
+				ast::Node::uptr child = get_component_parsers().at(token2)->parse(input);
 				node->add_component(ast::Component::uptr(dynamic_cast<ast::Component*>(child.release())));
 			} catch (const std::out_of_range&) {
 				std::cerr << "Skipping unknown component: " << token2 << std::endl;

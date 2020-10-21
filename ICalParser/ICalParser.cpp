@@ -7,7 +7,7 @@ namespace parser {
 
 ast::Node::uptr ICalParser::parse(std::istream& input) const
 {
-	ast::ICal::uptr node = get_factory().create_node_ical();
+	ast::ICal::uptr node = get_factory().create_ical();
 	std::string line;
 	while (std::getline(input, line)) {
 		auto pos = line.find(":");

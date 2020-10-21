@@ -5,18 +5,24 @@ import Ast;
 
 namespace ast {
 
-VCalendar::uptr NodeFactory::create_node_calendar() const
-{
-	return std::make_unique<ast::VCalendar>();
-}
-
-ICal::uptr NodeFactory::create_node_ical() const
+ICal::uptr NodeFactory::create_ical() const
 {
 	return std::make_unique<ast::ICal>();
 }
 
-VEvent::uptr NodeFactory::create_node_event() const
+VCalendar::uptr NodeFactory::create_vcalendar() const
+{
+	return std::make_unique<ast::VCalendar>();
+}
+
+VEvent::uptr NodeFactory::create_vevent() const
 {
 	return std::make_unique<ast::VEvent>();
 }
+
+VAlarm::uptr NodeFactory::create_valarm() const
+{
+	return std::make_unique<ast::VAlarm>();
+}
+
 }

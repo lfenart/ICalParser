@@ -16,4 +16,9 @@ const char* VCalendarParser::get_name() const
 	return "VCALENDAR";
 }
 
+ast::Component::uptr VCalendarParser::create_node() const
+{
+	return get_factory().create_vcalendar();
+}
+
 }

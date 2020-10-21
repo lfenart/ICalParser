@@ -15,4 +15,9 @@ const char* VEventParser::get_name() const
 	return "VEVENT";
 }
 
+ast::Component::uptr VEventParser::create_node() const
+{
+	return get_factory().create_vevent();
+}
+
 }

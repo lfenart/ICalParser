@@ -22,6 +22,9 @@
     <Filter Include="Fichiers sources\exception">
       <UniqueIdentifier>{1c93b08f-69b8-4c7d-8835-d598e2307b77}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\ast\visitor">
+      <UniqueIdentifier>{0a2dc098-8a6a-4680-85ee-f15f41bcc3e8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Parser.ixx">
@@ -77,6 +80,12 @@
     </ClCompile>
     <ClCompile Include="Component.cpp">
       <Filter>Fichiers sources\ast</Filter>
+    </ClCompile>
+    <ClCompile Include="VCalendar.cpp">
+      <Filter>Fichiers sources\ast</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlVisitor.cpp">
+      <Filter>Fichiers sources\ast\visitor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -35,6 +35,8 @@ int main(int argc, char* argv[])
 	parser::ICalParser p;
 	try {
 		auto node = p.parse(ss);
+		auto visitor = std::make_shared<ast::XmlVisitor>(std::cout);
+		node->accept(visitor);
 	} catch (std::runtime_error e) {
 		std::cerr << "Error: " << e.what() << std::endl;
 	}

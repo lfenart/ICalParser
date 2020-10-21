@@ -158,9 +158,11 @@
     <ClCompile Include="ICal.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Parser.ixx" />
+    <ClCompile Include="VCalendar.cpp" />
     <ClCompile Include="VCalendarParser.cpp" />
     <ClCompile Include="VEvent.cpp" />
     <ClCompile Include="VEventParser.cpp" />
+    <ClCompile Include="XmlVisitor.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

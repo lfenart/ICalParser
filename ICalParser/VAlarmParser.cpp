@@ -5,6 +5,8 @@ import Ast;
 
 namespace parser {
 
+VAlarmParser::VAlarmParser() { }
+
 const char* VAlarmParser::get_name() const
 {
 	return "VALARM";

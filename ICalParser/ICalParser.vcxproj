@@ -162,6 +162,8 @@
     <ClCompile Include="VCalendarParser.cpp" />
     <ClCompile Include="VEvent.cpp" />
     <ClCompile Include="VEventParser.cpp" />
+    <ClCompile Include="VJournal.cpp" />
+    <ClCompile Include="VJournalParser.cpp" />
     <ClCompile Include="XmlVisitor.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

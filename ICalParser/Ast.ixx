@@ -9,6 +9,7 @@ export class ICal;
 export class VCalendar;
 export class VEvent;
 export class VAlarm;
+export class VJournal;
 export class Component;
 export class NodeFactory;
 export class Visitor;
@@ -71,6 +72,17 @@ public:
 	void accept(std::shared_ptr<Visitor>) const override;
 };
 
+class VJournal : public Component {
+public:
+	using sptr = std::shared_ptr<VJournal>;
+	using uptr = std::unique_ptr<VJournal>;
+
+	VJournal() = default;
+	virtual ~VJournal() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
 class ICal : public Node {
 public:
 	using sptr = std::shared_ptr<ICal>;
@@ -90,10 +102,11 @@ private:
 
 class NodeFactory {
 public:
-	VCalendar::uptr create_vcalendar() const;
 	ICal::uptr create_ical() const;
-	VEvent::uptr create_vevent() const;
+	VCalendar::uptr create_vcalendar() const;
 	VAlarm::uptr create_valarm() const;
+	VEvent::uptr create_vevent() const;
+	VJournal::uptr create_vjournal() const;
 };
 
 class Visitor : public std::enable_shared_from_this<Visitor> {
@@ -104,6 +117,7 @@ public:
 	virtual void visit_vcalendar(const VCalendar&) = 0;
 	virtual void visit_valarm(const VAlarm&) = 0;
 	virtual void visit_vevent(const VEvent&) = 0;
+	virtual void visit_vjournal(const VJournal&) = 0;
 };
 
 class XmlVisitor : public Visitor {
@@ -116,6 +130,7 @@ public:
 	void visit_vcalendar(const VCalendar&) override;
 	void visit_valarm(const VAlarm&) override;
 	void visit_vevent(const VEvent&) override;
+	void visit_vjournal(const VJournal&) override;
 
 private:
 	std::ostream& out;

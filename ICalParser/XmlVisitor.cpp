@@ -48,4 +48,11 @@ void XmlVisitor::visit_vevent(const VEvent& vevent)
 	out << "</VEVENT>";
 }
 
+void XmlVisitor::visit_vjournal(const VJournal& vjournal)
+{
+	out << "<VJOURNAL>";
+	visit_component(vjournal);
+	out << "</VJOURNAL>";
+}
+
 }

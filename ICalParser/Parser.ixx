@@ -63,8 +63,18 @@ protected:
 
 class VAlarmParser : public ComponentParser {
 public:
-	VAlarmParser() = default;
+	VAlarmParser();
 	virtual ~VAlarmParser() = default;
+
+protected:
+	const char* get_name() const override;
+	ast::Component::uptr create_node() const override;
+};
+
+class VJournalParser : public ComponentParser {
+public:
+	VJournalParser();
+	virtual ~VJournalParser() = default;
 
 protected:
 	const char* get_name() const override;

@@ -87,5 +87,11 @@
     <ClCompile Include="XmlVisitor.cpp">
       <Filter>Fichiers sources\ast\visitor</Filter>
     </ClCompile>
+    <ClCompile Include="VJournalParser.cpp">
+      <Filter>Fichiers sources\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="VJournal.cpp">
+      <Filter>Fichiers sources\ast</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

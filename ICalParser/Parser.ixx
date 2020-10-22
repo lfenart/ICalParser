@@ -36,7 +36,7 @@ protected:
 	const std::map<std::string, std::unique_ptr<ComponentParser>>& get_component_parsers() const;
 	void add_component_parser(std::string add, std::unique_ptr<ComponentParser> parser);
 	virtual const std::string get_name() const = 0;
-	virtual ast::Component::uptr create_node() const = 0;
+	virtual ast::Component::uptr create_component() const = 0;
 
 private:
 	std::map<std::string, std::unique_ptr<ComponentParser>> component_parsers;
@@ -49,7 +49,7 @@ public:
 
 protected:
 	const std::string get_name() const override;
-	ast::Component::uptr create_node() const override;
+	ast::Component::uptr create_component() const override;
 };
 
 class VEventParser : public ComponentParser {
@@ -59,7 +59,7 @@ public:
 
 protected:
 	const std::string get_name() const override;
-	ast::Component::uptr create_node() const override;
+	ast::Component::uptr create_component() const override;
 };
 
 class VAlarmParser : public ComponentParser {
@@ -69,7 +69,7 @@ public:
 
 protected:
 	const std::string get_name() const override;
-	ast::Component::uptr create_node() const override;
+	ast::Component::uptr create_component() const override;
 };
 
 class VJournalParser : public ComponentParser {
@@ -79,7 +79,7 @@ public:
 
 protected:
 	const std::string get_name() const override;
-	ast::Component::uptr create_node() const override;
+	ast::Component::uptr create_component() const override;
 };
 
 class ICalParser : public Parser {

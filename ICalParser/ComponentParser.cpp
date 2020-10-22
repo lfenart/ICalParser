@@ -8,7 +8,7 @@ namespace parser {
 
 ast::Node::uptr ComponentParser::parse(std::istream& input) const
 {
-	ast::Component::uptr node = create_node();
+	ast::Component::uptr node = create_component();
 	std::string line;
 	for (;;) {
 		auto tokens = read_tokens(input);

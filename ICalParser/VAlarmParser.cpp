@@ -12,7 +12,7 @@ const std::string VAlarmParser::get_name() const
 	return "VALARM";
 }
 
-ast::Component::uptr VAlarmParser::create_node() const
+ast::Component::uptr VAlarmParser::create_component() const
 {
 	return get_factory().create_valarm();
 }

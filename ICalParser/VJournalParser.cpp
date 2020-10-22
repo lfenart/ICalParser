@@ -7,7 +7,7 @@ namespace parser {
 
 VJournalParser::VJournalParser() { }
 
-const std::string& VJournalParser::get_name() const
+const std::string VJournalParser::get_name() const
 {
 	return "VJOURNAL";
 }

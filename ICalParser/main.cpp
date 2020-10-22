@@ -18,10 +18,10 @@ std::string read_file(const char* path)
 	return input;
 }
 
-void remove_folded_lines(std::string& input)
-{
-	input = std::regex_replace(input, folded_line, "");
-}
+//void remove_folded_lines(std::string& input)
+//{
+//	input = std::regex_replace(input, folded_line, "");
+//}
 
 int main(int argc, char* argv[])
 {
@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 	std::string input = read_file(argv[1]);
-	remove_folded_lines(input);
+	//remove_folded_lines(input);
 	std::stringstream ss(input);
 	parser::ICalParser p;
 	try {

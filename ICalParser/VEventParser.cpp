@@ -10,7 +10,7 @@ VEventParser::VEventParser()
 	add_component_parser("VALARM", std::make_unique<VAlarmParser>());
 }
 
-const std::string& VEventParser::get_name() const
+const std::string VEventParser::get_name() const
 {
 	return "VEVENT";
 }

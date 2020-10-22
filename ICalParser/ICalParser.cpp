@@ -9,13 +9,13 @@ ast::Node::uptr ICalParser::parse(std::istream& input) const
 {
 	ast::ICal::uptr node = get_factory().create_ical();
 	std::string line;
-	while (std::getline(input, line)) {
-		auto pos = line.find(":");
-		if (pos == std::string::npos) {
-			throw exception::MissingColonError();
+	for (;;) {
+		auto tokens = read_tokens(input);
+		if (!tokens.has_value()) {
+			break;
 		}
-		std::string token1 = line.substr(0, pos);
-		std::string token2 = line.substr(pos + 1);
+		std::string token1 = tokens->first;
+		std::string token2 = tokens->second;
 		if (token1 != "BEGIN" || token2 != "VCALENDAR") {
 			throw std::runtime_error("BEGIN::VCALENDAR not found");
 		}

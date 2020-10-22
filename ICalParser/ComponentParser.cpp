@@ -11,22 +11,19 @@ ast::Node::uptr ComponentParser::parse(std::istream& input) const
 	ast::Component::uptr node = create_node();
 	std::string line;
 	for (;;) {
-		if (!std::getline(input, line)) {
+		auto tokens = read_tokens(input);
+		if (!tokens.has_value()) {
 			throw exception::UnexpectedEofError();
 		}
-		auto pos = line.find(":");
-		if (pos == std::string::npos) {
-			throw exception::MissingColonError();
-		}
-		std::string token1 = line.substr(0, pos);
-		std::string token2 = line.substr(pos + 1);
+		std::string token1 = tokens->first;
+		std::string token2 = tokens->second;
 		if (token1 == "END") {
-			if (token2 == get_name()) {
+			if (token2 != get_name()) {
 				throw exception::UnexpectedComponentEndError(token2);
 			}
 			break;
 		}
-		if (std::strcmp("BEGIN", token1.c_str()) == 0) {
+		if (token1 == "BEGIN") {
 			try {
 				ast::Node::uptr child = get_component_parsers().at(token2)->parse(input);
 				node->add_component(ast::Component::uptr(dynamic_cast<ast::Component*>(child.release())));

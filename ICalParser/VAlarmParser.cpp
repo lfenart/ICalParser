@@ -7,7 +7,7 @@ namespace parser {
 
 VAlarmParser::VAlarmParser() { }
 
-const std::string& VAlarmParser::get_name() const
+const std::string VAlarmParser::get_name() const
 {
 	return "VALARM";
 }

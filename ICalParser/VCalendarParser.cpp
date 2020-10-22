@@ -11,7 +11,7 @@ VCalendarParser::VCalendarParser()
 	add_component_parser("VEVENT", std::make_unique<VEventParser>());
 }
 
-const std::string& VCalendarParser::get_name() const
+const std::string VCalendarParser::get_name() const
 {
 	return "VCALENDAR";
 }

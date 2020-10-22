@@ -20,8 +20,8 @@ ast::Node::uptr ComponentParser::parse(std::istream& input) const
 		}
 		std::string token1 = line.substr(0, pos);
 		std::string token2 = line.substr(pos + 1);
-		if (std::strcmp("END", token1.c_str()) == 0) {
-			if (std::strcmp(get_name(), token2.c_str()) != 0) {
+		if (token1 == "END") {
+			if (token2 == get_name()) {
 				throw exception::UnexpectedComponentEndError(token2);
 			}
 			break;

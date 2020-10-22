@@ -16,7 +16,7 @@ ast::Node::uptr ICalParser::parse(std::istream& input) const
 		}
 		std::string token1 = line.substr(0, pos);
 		std::string token2 = line.substr(pos + 1);
-		if (std::strcmp("BEGIN", token1.c_str()) != 0 || std::strcmp("VCALENDAR", token2.c_str()) != 0) {
+		if (token1 != "BEGIN" || token2 != "VCALENDAR") {
 			throw std::runtime_error("BEGIN::VCALENDAR not found");
 		}
 		ast::Node::uptr calendar = calendar_parser.parse(input);

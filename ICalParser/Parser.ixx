@@ -21,8 +21,8 @@ public:
 
 protected:
 	const ast::NodeFactory& get_factory() const;
-	void parse_unknown_component(std::istream&, const char*) const;
-
+	void parse_unknown_component(std::istream&, const std::string&) const;
+	
 private:
 	ast::NodeFactory factory;
 };
@@ -34,7 +34,7 @@ public:
 protected:
 	const std::map<std::string, std::unique_ptr<ComponentParser>>& get_component_parsers() const;
 	void add_component_parser(std::string add, std::unique_ptr<ComponentParser> parser);
-	virtual const char* get_name() const = 0;
+	virtual const std::string& get_name() const = 0;
 	virtual ast::Component::uptr create_node() const = 0;
 
 private:
@@ -47,7 +47,7 @@ public:
 	virtual ~VCalendarParser() = default;
 
 protected:
-	const char* get_name() const override;
+	const std::string& get_name() const override;
 	ast::Component::uptr create_node() const override;
 };
 
@@ -57,7 +57,7 @@ public:
 	virtual ~VEventParser() = default;
 
 protected:
-	const char* get_name() const override;
+	const std::string& get_name() const override;
 	ast::Component::uptr create_node() const override;
 };
 
@@ -67,7 +67,7 @@ public:
 	virtual ~VAlarmParser() = default;
 
 protected:
-	const char* get_name() const override;
+	const std::string& get_name() const override;
 	ast::Component::uptr create_node() const override;
 };
 
@@ -77,7 +77,7 @@ public:
 	virtual ~VJournalParser() = default;
 
 protected:
-	const char* get_name() const override;
+	const std::string& get_name() const override;
 	ast::Component::uptr create_node() const override;
 };
 

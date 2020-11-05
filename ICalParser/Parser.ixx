@@ -34,12 +34,15 @@ public:
 
 protected:
 	const std::map<std::string, std::unique_ptr<ComponentParser>>& get_component_parsers() const;
+	const std::set<std::string>& get_properties() const;
 	void add_component_parser(std::string add, std::unique_ptr<ComponentParser> parser);
+	void add_property(std::string);
 	virtual const std::string get_name() const = 0;
 	virtual ast::Component::uptr create_component() const = 0;
 
 private:
 	std::map<std::string, std::unique_ptr<ComponentParser>> component_parsers;
+	std::set<std::string> properties;
 };
 
 class VCalendarParser : public ComponentParser {

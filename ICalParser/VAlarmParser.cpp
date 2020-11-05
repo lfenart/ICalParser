@@ -5,7 +5,10 @@ import Ast;
 
 namespace parser {
 
-VAlarmParser::VAlarmParser() { }
+VAlarmParser::VAlarmParser()
+{
+	add_property("DESCRIPTION");
+}
 
 const std::string VAlarmParser::get_name() const
 {

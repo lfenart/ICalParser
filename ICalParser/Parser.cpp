@@ -16,19 +16,20 @@ std::optional<std::pair<std::string, std::string>> Parser::read_tokens(std::istr
 	if (!std::getline(input, line)) {
 		return std::nullopt;
 	}
+	int c = input.get();
+	while (c == ' ' || c == '\t') {
+		std::string next_line;
+		std::getline(input, next_line);
+		line += next_line;
+		c = input.get();
+	}
+	input.unget();
 	auto pos = line.find(":");
 	if (pos == std::string::npos) {
 		throw exception::MissingColonError();
 	}
 	std::string token1 = line.substr(0, pos);
 	std::string token2 = line.substr(pos + 1);
-	int c = input.get();
-	while (c == ' ' || c == '\t') {
-		std::getline(input, line);
-		token2 += line;
-		c = input.get();
-	}
-	input.unget();
 	return std::pair<std::string, std::string>(token1, token2);
 }
 

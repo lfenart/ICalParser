@@ -1,7 +1,6 @@
-module Parser;
+module Ast;
 
 import std.core;
-import Ast;
 
 namespace ast {
 
@@ -28,6 +27,16 @@ VEvent::uptr NodeFactory::create_vevent() const
 VJournal::uptr NodeFactory::create_vjournal() const
 {
 	return std::make_unique<ast::VJournal>();
+}
+
+Property::uptr NodeFactory::create_property(const std::string& key, const std::string& value) const
+{
+	if (key == "DESCRIPTION") {
+		return std::make_unique<PropertyDescription>(value);
+	}
+	// TODO: add properties
+	// TODO: throw better exception
+	throw std::runtime_error("No such property");
 }
 
 }

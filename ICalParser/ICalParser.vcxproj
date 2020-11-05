@@ -145,6 +145,8 @@
   <ItemGroup>
     <ClCompile Include="Ast.ixx" />
     <ClCompile Include="ComponentParser.cpp" />
+    <ClCompile Include="PropertyDescription.cpp" />
+    <ClCompile Include="PropertyString.cpp" />
     <ClCompile Include="VAlarm.cpp" />
     <ClCompile Include="VAlarmParser.cpp" />
     <ClCompile Include="Exception.ixx" />

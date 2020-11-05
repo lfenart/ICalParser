@@ -93,5 +93,11 @@
     <ClCompile Include="VJournal.cpp">
       <Filter>Fichiers sources\ast</Filter>
     </ClCompile>
+    <ClCompile Include="PropertyDescription.cpp">
+      <Filter>Fichiers sources\ast</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyString.cpp">
+      <Filter>Fichiers sources\ast</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

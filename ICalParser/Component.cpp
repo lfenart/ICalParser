@@ -14,4 +14,14 @@ void Component::add_component(Component::uptr component)
 	components.push_back(std::move(component));
 }
 
+const std::vector<Property::uptr>& Component::get_properties() const
+{
+	return properties;
+}
+
+void Component::add_property(Property::uptr prop)
+{
+	properties.push_back(std::move(prop));
+}
+
 }

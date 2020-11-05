@@ -29,10 +29,13 @@ ast::Node::uptr ComponentParser::parse(std::istream& input) const
 				node->add_component(ast::Component::uptr(dynamic_cast<ast::Component*>(child.release())));
 			} catch (const std::out_of_range&) {
 				std::cerr << "Skipping unknown component: " << token2 << std::endl;
-				parse_unknown_component(input, token2.c_str());
+				parse_unknown_component(input, token2);
 			}
 		} else {
-			// TODO
+			if (get_properties().contains(token1)) {
+				ast::Property::uptr child = get_factory().create_property(token1, token2);
+				node->add_property(std::move(child));
+			}
 			std::cerr << "Skipping unknown property: " << token1 << std::endl;
 		}
 	}
@@ -44,9 +47,19 @@ const std::map<std::string, std::unique_ptr<ComponentParser>>& ComponentParser::
 	return component_parsers;
 }
 
+const std::set<std::string>& ComponentParser::get_properties() const
+{
+	return properties;
+}
+
 void ComponentParser::add_component_parser(std::string name, std::unique_ptr<ComponentParser> parser)
 {
 	component_parsers[name] = std::move(parser);
+}
+
+void ComponentParser::add_property(std::string prop)
+{
+	properties.insert(prop);
 }
 
 }

@@ -5,7 +5,10 @@ import Ast;
 
 namespace parser {
 
-VJournalParser::VJournalParser() { }
+VJournalParser::VJournalParser()
+{
+	add_property("DESCRIPTION");
+}
 
 const std::string VJournalParser::get_name() const
 {

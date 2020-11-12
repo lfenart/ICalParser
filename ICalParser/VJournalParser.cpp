@@ -7,7 +7,11 @@ namespace parser {
 
 VJournalParser::VJournalParser()
 {
+	// PropertyString
 	add_property("DESCRIPTION");
+
+	// PropertyDate
+	add_property("DTSTART");
 }
 
 const std::string VJournalParser::get_name() const

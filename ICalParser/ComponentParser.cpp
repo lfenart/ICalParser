@@ -35,8 +35,9 @@ ast::Node::uptr ComponentParser::parse(std::istream& input) const
 			if (get_properties().contains(token1)) {
 				ast::Property::uptr child = get_factory().create_property(token1, token2);
 				node->add_property(std::move(child));
+			} else {
+				std::cerr << "Skipping unknown property: " << token1 << std::endl;
 			}
-			std::cerr << "Skipping unknown property: " << token1 << std::endl;
 		}
 	}
 	return node;

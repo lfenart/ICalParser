@@ -1,6 +1,7 @@
 export module Ast;
 
 import std.core;
+import Datatype;
 
 namespace ast {
 
@@ -14,6 +15,7 @@ export class Component;
 export class Property;
 export class PropertyString;
 export class PropertyDescription;
+export class PropertyDate;
 export class NodeFactory;
 export class Visitor;
 export class XmlVisitor;
@@ -52,11 +54,36 @@ private:
 
 class PropertyDescription : public PropertyString {
 public:
-	using sptr = std::shared_ptr<PropertyString>;
-	using uptr = std::unique_ptr<PropertyString>;
+	using sptr = std::shared_ptr<PropertyDescription>;
+	using uptr = std::unique_ptr<PropertyDescription>;
 
 	PropertyDescription(const std::string&);
 	virtual ~PropertyDescription() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
+class PropertyDate : public Property {
+public:
+	using sptr = std::shared_ptr<PropertyDate>;
+	using uptr = std::unique_ptr<PropertyDate>;
+
+	PropertyDate(const datatype::Date&);
+	virtual ~PropertyDate() = default;
+
+	const datatype::Date& get_value() const;
+
+private:
+	datatype::Date value;
+};
+
+class PropertyDtStart : public PropertyDate {
+public:
+	using sptr = std::shared_ptr<PropertyDtStart>;
+	using uptr = std::unique_ptr<PropertyDtStart>;
+
+	PropertyDtStart(const datatype::Date&);
+	virtual ~PropertyDtStart() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
 };
@@ -162,6 +189,7 @@ public:
 	virtual void visit_vjournal(const VJournal&) = 0;
 
 	virtual void visit_description(const PropertyDescription&) = 0;
+	virtual void visit_dt_start(const PropertyDtStart&) = 0;
 };
 
 class XmlVisitor : public Visitor {
@@ -178,7 +206,9 @@ public:
 	void visit_vjournal(const VJournal&) override;
 
 	void visit_property_string(const PropertyString&);
+	void visit_property_date(const PropertyDate&);
 	void visit_description(const PropertyDescription&) override;
+	void visit_dt_start(const PropertyDtStart&) override;
 
 private:
 	std::ostream& out;

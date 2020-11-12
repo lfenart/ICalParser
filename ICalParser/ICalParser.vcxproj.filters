@@ -25,6 +25,15 @@
     <Filter Include="Fichiers sources\ast\visitor">
       <UniqueIdentifier>{0a2dc098-8a6a-4680-85ee-f15f41bcc3e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\ast\component">
+      <UniqueIdentifier>{4569f215-5680-453c-99d1-68bc8b63a352}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\ast\property">
+      <UniqueIdentifier>{6f508981-04d9-4cba-ab7b-b7b638e6010e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\datatype">
+      <UniqueIdentifier>{b23ffea2-357e-4b62-ba7b-7120aa513e28}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Parser.ixx">
@@ -54,17 +63,11 @@
     <ClCompile Include="VEventParser.cpp">
       <Filter>Fichiers sources\parser</Filter>
     </ClCompile>
-    <ClCompile Include="VEvent.cpp">
-      <Filter>Fichiers sources\ast</Filter>
-    </ClCompile>
     <ClCompile Include="ComponentParser.cpp">
       <Filter>Fichiers sources\parser</Filter>
     </ClCompile>
     <ClCompile Include="VAlarmParser.cpp">
       <Filter>Fichiers sources\parser</Filter>
-    </ClCompile>
-    <ClCompile Include="VAlarm.cpp">
-      <Filter>Fichiers sources\ast</Filter>
     </ClCompile>
     <ClCompile Include="Exception.ixx">
       <Filter>Fichiers sources\exception</Filter>
@@ -78,26 +81,44 @@
     <ClCompile Include="UnexpectedComponentEndError.cpp">
       <Filter>Fichiers sources\exception</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Fichiers sources\ast</Filter>
-    </ClCompile>
-    <ClCompile Include="VCalendar.cpp">
-      <Filter>Fichiers sources\ast</Filter>
-    </ClCompile>
     <ClCompile Include="XmlVisitor.cpp">
       <Filter>Fichiers sources\ast\visitor</Filter>
     </ClCompile>
     <ClCompile Include="VJournalParser.cpp">
       <Filter>Fichiers sources\parser</Filter>
     </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Fichiers sources\ast\component</Filter>
+    </ClCompile>
     <ClCompile Include="VJournal.cpp">
-      <Filter>Fichiers sources\ast</Filter>
+      <Filter>Fichiers sources\ast\component</Filter>
+    </ClCompile>
+    <ClCompile Include="VEvent.cpp">
+      <Filter>Fichiers sources\ast\component</Filter>
+    </ClCompile>
+    <ClCompile Include="VCalendar.cpp">
+      <Filter>Fichiers sources\ast\component</Filter>
+    </ClCompile>
+    <ClCompile Include="VAlarm.cpp">
+      <Filter>Fichiers sources\ast\component</Filter>
     </ClCompile>
     <ClCompile Include="PropertyDescription.cpp">
-      <Filter>Fichiers sources\ast</Filter>
+      <Filter>Fichiers sources\ast\property</Filter>
     </ClCompile>
     <ClCompile Include="PropertyString.cpp">
-      <Filter>Fichiers sources\ast</Filter>
+      <Filter>Fichiers sources\ast\property</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyDate.cpp">
+      <Filter>Fichiers sources\ast\property</Filter>
+    </ClCompile>
+    <ClCompile Include="Datatype.ixx">
+      <Filter>Fichiers sources\datatype</Filter>
+    </ClCompile>
+    <ClCompile Include="Date.cpp">
+      <Filter>Fichiers sources\datatype</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyDtStart.cpp">
+      <Filter>Fichiers sources\ast\property</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

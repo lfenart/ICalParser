@@ -12,6 +12,9 @@ VJournalParser::VJournalParser()
 
 	// PropertyDate
 	add_property("DTSTART");
+
+	// PropertyInt
+	add_property("SEQUENCE");
 }
 
 const std::string VJournalParser::get_name() const

@@ -61,7 +61,7 @@ void XmlVisitor::visit_vjournal(const VJournal& vjournal)
 
 void XmlVisitor::visit_property_string(const PropertyString& prop)
 {
-	out << " value=\"" << prop.get_value() << "\"\\>";
+	out << " value=\"" << prop.get_value() << "\"/>";
 }
 
 void XmlVisitor::visit_description(const PropertyDescription& description)
@@ -73,13 +73,24 @@ void XmlVisitor::visit_description(const PropertyDescription& description)
 void XmlVisitor::visit_property_date(const PropertyDate& prop)
 {
 	// TODO
-	out << " value=\"" << prop.get_value() << "\"\\>";
+	out << " value=\"" << prop.get_value() << "\"/>";
 }
 
 void XmlVisitor::visit_dt_start(const PropertyDtStart& description)
 {
 	out << "<DTSTART";
 	visit_property_date(description);
+}
+
+void XmlVisitor::visit_property_int(const PropertyInt& prop)
+{
+	out << " value=\"" << prop.get_value() << "\"/>";
+}
+
+void XmlVisitor::visit_sequence(const PropertySequence& sequence)
+{
+	out << "<SEQUENCE";
+	visit_property_int(sequence);
 }
 
 }

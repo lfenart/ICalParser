@@ -14,6 +14,9 @@ VEventParser::VEventParser()
 
 	// PropertyDate
 	add_property("DTSTART");
+
+	// PropertyInt
+	add_property("SEQUENCE");
 }
 
 const std::string VEventParser::get_name() const

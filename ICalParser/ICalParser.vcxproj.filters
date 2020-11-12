@@ -120,5 +120,11 @@
     <ClCompile Include="PropertyDtStart.cpp">
       <Filter>Fichiers sources\ast\property</Filter>
     </ClCompile>
+    <ClCompile Include="PropertyInt.cpp">
+      <Filter>Fichiers sources\ast\property</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertySequence.cpp">
+      <Filter>Fichiers sources\ast\property</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

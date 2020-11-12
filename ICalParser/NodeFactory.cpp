@@ -37,6 +37,9 @@ Property::uptr NodeFactory::create_property(const std::string& key, const std::s
 	if (key == "DTSTART") {
 		return std::make_unique<PropertyDtStart>(value);
 	}
+	if (key == "SEQUENCE") {
+		return std::make_unique<PropertySequence>(std::stoll(value));
+	}
 	// TODO: add properties
 	// TODO: throw better exception
 	throw std::runtime_error("No such property");

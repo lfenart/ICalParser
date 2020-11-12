@@ -6,17 +6,27 @@ import Datatype;
 namespace ast {
 
 export class Node;
+
 export class ICal;
-export class VCalendar;
-export class VEvent;
-export class VAlarm;
-export class VJournal;
+
 export class Component;
+export class VCalendar;
+export class VAlarm;
+export class VEvent;
+export class VJournal;
+
 export class Property;
 export class PropertyString;
 export class PropertyDescription;
+
 export class PropertyDate;
+export class PropertyDtStart;
+
+export class PropertyInt;
+export class PropertySequence;
+
 export class NodeFactory;
+
 export class Visitor;
 export class XmlVisitor;
 
@@ -84,6 +94,31 @@ public:
 
 	PropertyDtStart(const datatype::Date&);
 	virtual ~PropertyDtStart() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
+class PropertyInt : public Property {
+public:
+	using sptr = std::shared_ptr<PropertyInt>;
+	using uptr = std::unique_ptr<PropertyInt>;
+
+	PropertyInt(long long);
+	virtual ~PropertyInt() = default;
+
+	long long get_value() const;
+
+private:
+	long long value;
+};
+
+class PropertySequence : public PropertyInt {
+public:
+	using sptr = std::shared_ptr<PropertySequence>;
+	using uptr = std::unique_ptr<PropertySequence>;
+
+	PropertySequence(long long);
+	virtual ~PropertySequence() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
 };
@@ -190,6 +225,7 @@ public:
 
 	virtual void visit_description(const PropertyDescription&) = 0;
 	virtual void visit_dt_start(const PropertyDtStart&) = 0;
+	virtual void visit_sequence(const PropertySequence&) = 0;
 };
 
 class XmlVisitor : public Visitor {
@@ -207,8 +243,10 @@ public:
 
 	void visit_property_string(const PropertyString&);
 	void visit_property_date(const PropertyDate&);
+	void visit_property_int(const PropertyInt&);
 	void visit_description(const PropertyDescription&) override;
 	void visit_dt_start(const PropertyDtStart&) override;
+	void visit_sequence(const PropertySequence&) override;
 
 private:
 	std::ostream& out;

@@ -18,9 +18,20 @@ export class VJournal;
 export class Property;
 export class PropertyString;
 export class PropertyDescription;
+export class PropertyLocation;
+export class PropertyUid;
+export class PropertySummary;
+export class PropertyMethod;
+export class PropertyProdId;
+export class PropertyVersion;
+export class PropertyCalScale;
 
 export class PropertyDate;
 export class PropertyDtStart;
+export class PropertyDtStamp;
+export class PropertyDtEnd;
+export class PropertyCreated;
+export class PropertyLastModified;
 
 export class PropertyInt;
 export class PropertySequence;
@@ -73,6 +84,83 @@ public:
 	void accept(std::shared_ptr<Visitor>) const override;
 };
 
+class PropertyLocation : public PropertyString {
+public:
+	using sptr = std::shared_ptr<PropertyLocation>;
+	using uptr = std::unique_ptr<PropertyLocation>;
+
+	PropertyLocation(const std::string&);
+	virtual ~PropertyLocation() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
+class PropertyUid : public PropertyString {
+public:
+	using sptr = std::shared_ptr<PropertyUid>;
+	using uptr = std::unique_ptr<PropertyUid>;
+
+	PropertyUid(const std::string&);
+	virtual ~PropertyUid() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
+class PropertySummary : public PropertyString {
+public:
+	using sptr = std::shared_ptr<PropertySummary>;
+	using uptr = std::unique_ptr<PropertySummary>;
+
+	PropertySummary(const std::string&);
+	virtual ~PropertySummary() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
+class PropertyMethod : public PropertyString {
+public:
+	using sptr = std::shared_ptr<PropertyMethod>;
+	using uptr = std::unique_ptr<PropertyMethod>;
+
+	PropertyMethod(const std::string&);
+	virtual ~PropertyMethod() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
+class PropertyProdId : public PropertyString {
+public:
+	using sptr = std::shared_ptr<PropertyProdId>;
+	using uptr = std::unique_ptr<PropertyProdId>;
+
+	PropertyProdId(const std::string&);
+	virtual ~PropertyProdId() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
+class PropertyVersion : public PropertyString {
+public:
+	using sptr = std::shared_ptr<PropertyVersion>;
+	using uptr = std::unique_ptr<PropertyVersion>;
+
+	PropertyVersion(const std::string&);
+	virtual ~PropertyVersion() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
+class PropertyCalScale : public PropertyString {
+public:
+	using sptr = std::shared_ptr<PropertyCalScale>;
+	using uptr = std::unique_ptr<PropertyCalScale>;
+
+	PropertyCalScale(const std::string&);
+	virtual ~PropertyCalScale() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
 class PropertyDate : public Property {
 public:
 	using sptr = std::shared_ptr<PropertyDate>;
@@ -94,6 +182,50 @@ public:
 
 	PropertyDtStart(const datatype::Date&);
 	virtual ~PropertyDtStart() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
+class PropertyDtStamp : public PropertyDate {
+public:
+	using sptr = std::shared_ptr<PropertyDtStamp>;
+	using uptr = std::unique_ptr<PropertyDtStamp>;
+
+	PropertyDtStamp(const datatype::Date&);
+	virtual ~PropertyDtStamp() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
+class PropertyDtEnd : public PropertyDate {
+public:
+	using sptr = std::shared_ptr<PropertyDtEnd>;
+	using uptr = std::unique_ptr<PropertyDtEnd>;
+
+	PropertyDtEnd(const datatype::Date&);
+	virtual ~PropertyDtEnd() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
+class PropertyCreated : public PropertyDate {
+public:
+	using sptr = std::shared_ptr<PropertyCreated>;
+	using uptr = std::unique_ptr<PropertyCreated>;
+
+	PropertyCreated(const datatype::Date&);
+	virtual ~PropertyCreated() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
+class PropertyLastModified : public PropertyDate {
+public:
+	using sptr = std::shared_ptr<PropertyLastModified>;
+	using uptr = std::unique_ptr<PropertyLastModified>;
+
+	PropertyLastModified(const datatype::Date&);
+	virtual ~PropertyLastModified() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
 };
@@ -224,7 +356,18 @@ public:
 	virtual void visit_vjournal(const VJournal&) = 0;
 
 	virtual void visit_description(const PropertyDescription&) = 0;
+	virtual void visit_summary(const PropertySummary&) = 0;
+	virtual void visit_location(const PropertyLocation&) = 0;
+	virtual void visit_uid(const PropertyUid&) = 0;
+	virtual void visit_method(const PropertyMethod&) = 0;
+	virtual void visit_prod_id(const PropertyProdId&) = 0;
+	virtual void visit_version(const PropertyVersion&) = 0;
+	virtual void visit_cal_scale(const PropertyCalScale&) = 0;
 	virtual void visit_dt_start(const PropertyDtStart&) = 0;
+	virtual void visit_dt_stamp(const PropertyDtStamp&) = 0;
+	virtual void visit_dt_end(const PropertyDtEnd&) = 0;
+	virtual void visit_created(const PropertyCreated&) = 0;
+	virtual void visit_last_modified(const PropertyLastModified&) = 0;
 	virtual void visit_sequence(const PropertySequence&) = 0;
 };
 
@@ -245,7 +388,18 @@ public:
 	void visit_property_date(const PropertyDate&);
 	void visit_property_int(const PropertyInt&);
 	void visit_description(const PropertyDescription&) override;
+	void visit_summary(const PropertySummary&) override;
+	void visit_location(const PropertyLocation&) override;
+	void visit_uid(const PropertyUid&) override;
+	void XmlVisitor::visit_method(const PropertyMethod&) override;
+	void XmlVisitor::visit_prod_id(const PropertyProdId&) override;
+	void XmlVisitor::visit_version(const PropertyVersion&) override;
+	void XmlVisitor::visit_cal_scale(const PropertyCalScale&) override;
 	void visit_dt_start(const PropertyDtStart&) override;
+	void visit_dt_stamp(const PropertyDtStamp&) override;
+	void visit_dt_end(const PropertyDtEnd&) override;
+	void visit_created(const PropertyCreated&) override;
+	void visit_last_modified(const PropertyLastModified&) override;
 	void visit_sequence(const PropertySequence&) override;
 
 private:

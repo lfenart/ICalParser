@@ -64,10 +64,52 @@ void XmlVisitor::visit_property_string(const PropertyString& prop)
 	out << " value=\"" << prop.get_value() << "\"/>";
 }
 
-void XmlVisitor::visit_description(const PropertyDescription& description)
+void XmlVisitor::visit_description(const PropertyDescription& prop)
 {
 	out << "<DESCRIPTION";
-	visit_property_string(description);
+	visit_property_string(prop);
+}
+
+void XmlVisitor::visit_summary(const PropertySummary& prop)
+{
+	out << "<SUMMARY";
+	visit_property_string(prop);
+}
+
+void XmlVisitor::visit_location(const PropertyLocation& prop)
+{
+	out << "<LOCATION";
+	visit_property_string(prop);
+}
+
+void XmlVisitor::visit_uid(const PropertyUid& prop)
+{
+	out << "<UID";
+	visit_property_string(prop);
+}
+
+void XmlVisitor::visit_method(const PropertyMethod& prop)
+{
+	out << "<METHOD";
+	visit_property_string(prop);
+}
+
+void XmlVisitor::visit_prod_id(const PropertyProdId& prop)
+{
+	out << "<PRODID";
+	visit_property_string(prop);
+}
+
+void XmlVisitor::visit_version(const PropertyVersion& prop)
+{
+	out << "<VERSION";
+	visit_property_string(prop);
+}
+
+void XmlVisitor::visit_cal_scale(const PropertyCalScale& prop)
+{
+	out << "<CALSCALE";
+	visit_property_string(prop);
 }
 
 void XmlVisitor::visit_property_date(const PropertyDate& prop)
@@ -76,10 +118,34 @@ void XmlVisitor::visit_property_date(const PropertyDate& prop)
 	out << " value=\"" << prop.get_value() << "\"/>";
 }
 
-void XmlVisitor::visit_dt_start(const PropertyDtStart& description)
+void XmlVisitor::visit_dt_start(const PropertyDtStart& prop)
 {
 	out << "<DTSTART";
-	visit_property_date(description);
+	visit_property_date(prop);
+}
+
+void XmlVisitor::visit_dt_stamp(const PropertyDtStamp& prop)
+{
+	out << "<DTSTAMP";
+	visit_property_date(prop);
+}
+
+void XmlVisitor::visit_created(const PropertyCreated& prop)
+{
+	out << "<CREATED";
+	visit_property_date(prop);
+}
+
+void XmlVisitor::visit_last_modified(const PropertyLastModified& prop)
+{
+	out << "<LAST-MODIFIED";
+	visit_property_date(prop);
+}
+
+void XmlVisitor::visit_dt_end(const PropertyDtEnd& prop)
+{
+	out << "<DTSTAMP";
+	visit_property_date(prop);
 }
 
 void XmlVisitor::visit_property_int(const PropertyInt& prop)
@@ -87,10 +153,10 @@ void XmlVisitor::visit_property_int(const PropertyInt& prop)
 	out << " value=\"" << prop.get_value() << "\"/>";
 }
 
-void XmlVisitor::visit_sequence(const PropertySequence& sequence)
+void XmlVisitor::visit_sequence(const PropertySequence& prop)
 {
 	out << "<SEQUENCE";
-	visit_property_int(sequence);
+	visit_property_int(prop);
 }
 
 }

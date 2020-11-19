@@ -11,9 +11,16 @@ VEventParser::VEventParser()
 
 	// PropertyString
 	add_property("DESCRIPTION");
+	add_property("SUMMARY");
+	add_property("LOCATION");
+	add_property("UID");
 
 	// PropertyDate
 	add_property("DTSTART");
+	add_property("DTSTAMP");
+	add_property("DTEND");
+	add_property("CREATED");
+	add_property("LAST-MODIFIED");
 
 	// PropertyInt
 	add_property("SEQUENCE");

@@ -34,6 +34,15 @@
     <Filter Include="Fichiers sources\datatype">
       <UniqueIdentifier>{b23ffea2-357e-4b62-ba7b-7120aa513e28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\ast\property\date">
+      <UniqueIdentifier>{bb7c6203-398f-4f6c-b232-61e718c204ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\ast\property\string">
+      <UniqueIdentifier>{2c33af84-20fd-484c-83dd-976c6602e38c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\ast\property\int">
+      <UniqueIdentifier>{98884c25-664a-4538-8bba-4deb5890977f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Parser.ixx">
@@ -102,29 +111,62 @@
     <ClCompile Include="VAlarm.cpp">
       <Filter>Fichiers sources\ast\component</Filter>
     </ClCompile>
-    <ClCompile Include="PropertyDescription.cpp">
-      <Filter>Fichiers sources\ast\property</Filter>
-    </ClCompile>
-    <ClCompile Include="PropertyString.cpp">
-      <Filter>Fichiers sources\ast\property</Filter>
-    </ClCompile>
-    <ClCompile Include="PropertyDate.cpp">
-      <Filter>Fichiers sources\ast\property</Filter>
-    </ClCompile>
     <ClCompile Include="Datatype.ixx">
       <Filter>Fichiers sources\datatype</Filter>
     </ClCompile>
     <ClCompile Include="Date.cpp">
       <Filter>Fichiers sources\datatype</Filter>
     </ClCompile>
+    <ClCompile Include="PropertyCreated.cpp">
+      <Filter>Fichiers sources\ast\property\date</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyDate.cpp">
+      <Filter>Fichiers sources\ast\property\date</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyDtEnd.cpp">
+      <Filter>Fichiers sources\ast\property\date</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyDtStamp.cpp">
+      <Filter>Fichiers sources\ast\property\date</Filter>
+    </ClCompile>
     <ClCompile Include="PropertyDtStart.cpp">
-      <Filter>Fichiers sources\ast\property</Filter>
+      <Filter>Fichiers sources\ast\property\date</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyLastModified.cpp">
+      <Filter>Fichiers sources\ast\property\date</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyDescription.cpp">
+      <Filter>Fichiers sources\ast\property\string</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyString.cpp">
+      <Filter>Fichiers sources\ast\property\string</Filter>
     </ClCompile>
     <ClCompile Include="PropertyInt.cpp">
-      <Filter>Fichiers sources\ast\property</Filter>
+      <Filter>Fichiers sources\ast\property\int</Filter>
     </ClCompile>
     <ClCompile Include="PropertySequence.cpp">
-      <Filter>Fichiers sources\ast\property</Filter>
+      <Filter>Fichiers sources\ast\property\int</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyLocation.cpp">
+      <Filter>Fichiers sources\ast\property\string</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyUid.cpp">
+      <Filter>Fichiers sources\ast\property\string</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertySummary.cpp">
+      <Filter>Fichiers sources\ast\property\string</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyMethod.cpp">
+      <Filter>Fichiers sources\ast\property\string</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyProdId.cpp">
+      <Filter>Fichiers sources\ast\property\string</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyVersion.cpp">
+      <Filter>Fichiers sources\ast\property\string</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyCalScale.cpp">
+      <Filter>Fichiers sources\ast\property\string</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

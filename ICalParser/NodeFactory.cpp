@@ -1,6 +1,7 @@
 module Ast;
 
 import std.core;
+import Exception;
 
 namespace ast {
 
@@ -74,8 +75,7 @@ Property::uptr NodeFactory::create_property(const std::string& key, const std::s
 		return std::make_unique<PropertySequence>(std::stoll(value));
 	}
 	// TODO: add properties
-	// TODO: throw better exception
-	throw std::runtime_error("No such property");
+	throw exception::UnknownPropertyError(key);
 }
 
 }

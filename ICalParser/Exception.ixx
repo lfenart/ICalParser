@@ -22,4 +22,10 @@ public:
 	virtual ~UnexpectedComponentEndError() = default;
 };
 
+export class UnknownPropertyError : public std::runtime_error {
+public:
+	UnknownPropertyError(std::string);
+	virtual ~UnknownPropertyError() = default;
+};
+
 }

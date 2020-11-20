@@ -168,5 +168,8 @@
     <ClCompile Include="PropertyCalScale.cpp">
       <Filter>Fichiers sources\ast\property\string</Filter>
     </ClCompile>
+    <ClCompile Include="UnknownPropertyError.cpp">
+      <Filter>Fichiers sources\exception</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

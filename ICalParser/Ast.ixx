@@ -391,10 +391,10 @@ public:
 	void visit_summary(const PropertySummary&) override;
 	void visit_location(const PropertyLocation&) override;
 	void visit_uid(const PropertyUid&) override;
-	void XmlVisitor::visit_method(const PropertyMethod&) override;
-	void XmlVisitor::visit_prod_id(const PropertyProdId&) override;
-	void XmlVisitor::visit_version(const PropertyVersion&) override;
-	void XmlVisitor::visit_cal_scale(const PropertyCalScale&) override;
+	void visit_method(const PropertyMethod&) override;
+	void visit_prod_id(const PropertyProdId&) override;
+	void visit_version(const PropertyVersion&) override;
+	void visit_cal_scale(const PropertyCalScale&) override;
 	void visit_dt_start(const PropertyDtStart&) override;
 	void visit_dt_stamp(const PropertyDtStamp&) override;
 	void visit_dt_end(const PropertyDtEnd&) override;

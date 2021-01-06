@@ -40,6 +40,7 @@ export class NodeFactory;
 
 export class Visitor;
 export class XmlVisitor;
+export class RoomOccupancyVisitor;
 
 class Node {
 public:
@@ -161,70 +162,70 @@ public:
 	void accept(std::shared_ptr<Visitor>) const override;
 };
 
-class PropertyDate : public Property {
+class PropertyDateTime : public Property {
 public:
 	using sptr = std::shared_ptr<PropertyDate>;
 	using uptr = std::unique_ptr<PropertyDate>;
 
-	PropertyDate(const datatype::Date&);
-	virtual ~PropertyDate() = default;
+	PropertyDateTime(const datatype::DateTime&);
+	virtual ~PropertyDateTime() = default;
 
-	const datatype::Date& get_value() const;
+	const datatype::DateTime& get_value() const;
 
 private:
-	datatype::Date value;
+	datatype::DateTime value;
 };
 
-class PropertyDtStart : public PropertyDate {
+class PropertyDtStart : public PropertyDateTime {
 public:
 	using sptr = std::shared_ptr<PropertyDtStart>;
 	using uptr = std::unique_ptr<PropertyDtStart>;
 
-	PropertyDtStart(const datatype::Date&);
+	PropertyDtStart(const datatype::DateTime&);
 	virtual ~PropertyDtStart() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
 };
 
-class PropertyDtStamp : public PropertyDate {
+class PropertyDtStamp : public PropertyDateTime {
 public:
 	using sptr = std::shared_ptr<PropertyDtStamp>;
 	using uptr = std::unique_ptr<PropertyDtStamp>;
 
-	PropertyDtStamp(const datatype::Date&);
+	PropertyDtStamp(const datatype::DateTime&);
 	virtual ~PropertyDtStamp() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
 };
 
-class PropertyDtEnd : public PropertyDate {
+class PropertyDtEnd : public PropertyDateTime {
 public:
 	using sptr = std::shared_ptr<PropertyDtEnd>;
 	using uptr = std::unique_ptr<PropertyDtEnd>;
 
-	PropertyDtEnd(const datatype::Date&);
+	PropertyDtEnd(const datatype::DateTime&);
 	virtual ~PropertyDtEnd() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
 };
 
-class PropertyCreated : public PropertyDate {
+class PropertyCreated : public PropertyDateTime {
 public:
 	using sptr = std::shared_ptr<PropertyCreated>;
 	using uptr = std::unique_ptr<PropertyCreated>;
 
-	PropertyCreated(const datatype::Date&);
+	PropertyCreated(const datatype::DateTime&);
 	virtual ~PropertyCreated() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
 };
 
-class PropertyLastModified : public PropertyDate {
+class PropertyLastModified : public PropertyDateTime {
 public:
 	using sptr = std::shared_ptr<PropertyLastModified>;
 	using uptr = std::unique_ptr<PropertyLastModified>;
 
-	PropertyLastModified(const datatype::Date&);
+	PropertyLastModified(const datatype::DateTime&);
 	virtual ~PropertyLastModified() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
@@ -385,7 +386,7 @@ public:
 	void visit_vjournal(const VJournal&) override;
 
 	void visit_property_string(const PropertyString&);
-	void visit_property_date(const PropertyDate&);
+	void visit_property_date_time(const PropertyDateTime&);
 	void visit_property_int(const PropertyInt&);
 	void visit_description(const PropertyDescription&) override;
 	void visit_summary(const PropertySummary&) override;
@@ -404,6 +405,45 @@ public:
 
 private:
 	std::ostream& out;
+};
+
+class RoomOccupancyVisitor : public Visitor {
+public:
+	RoomOccupancyVisitor(std::ostream&);
+	virtual ~RoomOccupancyVisitor() = default;
+
+	void visit_ical(const ICal&) override;
+
+	void visit_component(const Component&);
+	void visit_vcalendar(const VCalendar&) override;
+	void visit_valarm(const VAlarm&) override;
+	void visit_vevent(const VEvent&) override;
+	void visit_vjournal(const VJournal&) override;
+
+	void visit_property_string(const PropertyString&);
+	void visit_property_date_time(const PropertyDateTime&);
+	void visit_property_int(const PropertyInt&);
+	void visit_description(const PropertyDescription&) override;
+	void visit_summary(const PropertySummary&) override;
+	void visit_location(const PropertyLocation&) override;
+	void visit_uid(const PropertyUid&) override;
+	void visit_method(const PropertyMethod&) override;
+	void visit_prod_id(const PropertyProdId&) override;
+	void visit_version(const PropertyVersion&) override;
+	void visit_cal_scale(const PropertyCalScale&) override;
+	void visit_dt_start(const PropertyDtStart&) override;
+	void visit_dt_stamp(const PropertyDtStamp&) override;
+	void visit_dt_end(const PropertyDtEnd&) override;
+	void visit_created(const PropertyCreated&) override;
+	void visit_last_modified(const PropertyLastModified&) override;
+	void visit_sequence(const PropertySequence&) override;
+
+private:
+	std::ostream& out;
+	std::map<std::string, unsigned long> room_occupancy;
+	std::vector<std::string> locations;
+	std::optional<datatype::DateTime> start;
+	std::optional<datatype::DateTime> end;
 };
 
 }

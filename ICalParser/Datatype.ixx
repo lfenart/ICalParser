@@ -4,20 +4,21 @@ import std.core;
 
 namespace datatype {
 
-export class Date;
+export class DateTime;
 
-class Date {
+class DateTime {
 public:
-	Date(const std::string&);
-	virtual ~Date() = default;
+	DateTime(const std::string&);
+	virtual ~DateTime() = default;
+
+	unsigned long duration(const DateTime&) const;
 
 	std::ostream& print_on(std::ostream&) const;
 
-	friend std::ostream& operator<<(std::ostream&, const Date&);
+	friend std::ostream& operator<<(std::ostream&, const DateTime&);
 
 private:
-	// TODO
-	std::string value;
+	std::time_t date_time;
 };
 
 }

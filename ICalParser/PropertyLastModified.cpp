@@ -4,8 +4,8 @@ import std.core;
 
 namespace ast {
 
-PropertyLastModified::PropertyLastModified(const datatype::Date& val)
-	: PropertyDate(val)
+PropertyLastModified::PropertyLastModified(const datatype::DateTime& val)
+	: PropertyDateTime(val)
 {
 }
 

@@ -4,8 +4,8 @@ import std.core;
 
 namespace ast {
 
-PropertyDtStart::PropertyDtStart(const datatype::Date& val)
-	: PropertyDate(val)
+PropertyDtStart::PropertyDtStart(const datatype::DateTime& val)
+	: PropertyDateTime(val)
 {
 }
 

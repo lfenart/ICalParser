@@ -4,8 +4,8 @@ import std.core;
 
 namespace ast {
 
-PropertyDtStamp::PropertyDtStamp(const datatype::Date& val)
-	: PropertyDate(val)
+PropertyDtStamp::PropertyDtStamp(const datatype::DateTime& val)
+	: PropertyDateTime(val)
 {
 }
 

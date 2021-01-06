@@ -112,7 +112,7 @@ void XmlVisitor::visit_cal_scale(const PropertyCalScale& prop)
 	visit_property_string(prop);
 }
 
-void XmlVisitor::visit_property_date(const PropertyDate& prop)
+void XmlVisitor::visit_property_date_time(const PropertyDateTime& prop)
 {
 	// TODO
 	out << " value=\"" << prop.get_value() << "\"/>";
@@ -121,31 +121,31 @@ void XmlVisitor::visit_property_date(const PropertyDate& prop)
 void XmlVisitor::visit_dt_start(const PropertyDtStart& prop)
 {
 	out << "<DTSTART";
-	visit_property_date(prop);
+	visit_property_date_time(prop);
 }
 
 void XmlVisitor::visit_dt_stamp(const PropertyDtStamp& prop)
 {
 	out << "<DTSTAMP";
-	visit_property_date(prop);
+	visit_property_date_time(prop);
 }
 
 void XmlVisitor::visit_created(const PropertyCreated& prop)
 {
 	out << "<CREATED";
-	visit_property_date(prop);
+	visit_property_date_time(prop);
 }
 
 void XmlVisitor::visit_last_modified(const PropertyLastModified& prop)
 {
 	out << "<LAST-MODIFIED";
-	visit_property_date(prop);
+	visit_property_date_time(prop);
 }
 
 void XmlVisitor::visit_dt_end(const PropertyDtEnd& prop)
 {
-	out << "<DTSTAMP";
-	visit_property_date(prop);
+	out << "<DTEND";
+	visit_property_date_time(prop);
 }
 
 void XmlVisitor::visit_property_int(const PropertyInt& prop)

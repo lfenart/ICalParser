@@ -114,13 +114,7 @@
     <ClCompile Include="Datatype.ixx">
       <Filter>Fichiers sources\datatype</Filter>
     </ClCompile>
-    <ClCompile Include="Date.cpp">
-      <Filter>Fichiers sources\datatype</Filter>
-    </ClCompile>
     <ClCompile Include="PropertyCreated.cpp">
-      <Filter>Fichiers sources\ast\property\date</Filter>
-    </ClCompile>
-    <ClCompile Include="PropertyDate.cpp">
       <Filter>Fichiers sources\ast\property\date</Filter>
     </ClCompile>
     <ClCompile Include="PropertyDtEnd.cpp">
@@ -170,6 +164,15 @@
     </ClCompile>
     <ClCompile Include="UnknownPropertyError.cpp">
       <Filter>Fichiers sources\exception</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomOccupancyVisitor.cpp">
+      <Filter>Fichiers sources\ast\visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="DateTime.cpp">
+      <Filter>Fichiers sources\datatype</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyDateTime.cpp">
+      <Filter>Fichiers sources\ast\property\date</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -4,8 +4,8 @@ import std.core;
 
 namespace ast {
 
-PropertyUid::PropertyUid(const std::string& val)
-	: PropertyString(val)
+PropertyUid::PropertyUid(const std::string& val, const std::map<std::string, std::string>& params)
+	: PropertyString(val, params)
 {
 }
 

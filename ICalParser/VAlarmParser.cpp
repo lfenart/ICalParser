@@ -8,6 +8,7 @@ namespace parser {
 VAlarmParser::VAlarmParser()
 {
 	add_property("DESCRIPTION");
+	add_property("ATTENDEE");
 }
 
 const std::string VAlarmParser::get_name() const

@@ -9,6 +9,13 @@ XmlVisitor::XmlVisitor(std::ostream& output)
 {
 }
 
+void XmlVisitor::visit_property(const Property& prop)
+{
+	for (auto param : prop.get_params()) {
+		out << "<" << param.first << " value=\"" << param.second << "\"/>";
+	}
+}
+
 void XmlVisitor::visit_ical(const ICal& ical)
 {
 	out << "<ICAL>";
@@ -59,104 +66,101 @@ void XmlVisitor::visit_vjournal(const VJournal& vjournal)
 	out << "</VJOURNAL>";
 }
 
-void XmlVisitor::visit_property_string(const PropertyString& prop)
+void XmlVisitor::visit_property_string(const std::string& name, const PropertyString& prop)
 {
-	out << " value=\"" << prop.get_value() << "\"/>";
+	out << "<" << name << " value=\"" << prop.get_value() << "\">";
+	visit_property(prop);
+	out << "</" << name << ">";
 }
 
 void XmlVisitor::visit_description(const PropertyDescription& prop)
 {
-	out << "<DESCRIPTION";
-	visit_property_string(prop);
+	visit_property_string("DESCRIPTION", prop);
 }
 
 void XmlVisitor::visit_summary(const PropertySummary& prop)
 {
-	out << "<SUMMARY";
-	visit_property_string(prop);
+	visit_property_string("SUMMARY", prop);
 }
 
 void XmlVisitor::visit_location(const PropertyLocation& prop)
 {
-	out << "<LOCATION";
-	visit_property_string(prop);
+	visit_property_string("LOCATION", prop);
 }
 
 void XmlVisitor::visit_uid(const PropertyUid& prop)
 {
-	out << "<UID";
-	visit_property_string(prop);
+	visit_property_string("UID", prop);
 }
 
 void XmlVisitor::visit_method(const PropertyMethod& prop)
 {
-	out << "<METHOD";
-	visit_property_string(prop);
+	visit_property_string("METHOD", prop);
 }
 
 void XmlVisitor::visit_prod_id(const PropertyProdId& prop)
 {
-	out << "<PRODID";
-	visit_property_string(prop);
+	visit_property_string("PRODID", prop);
 }
 
 void XmlVisitor::visit_version(const PropertyVersion& prop)
 {
-	out << "<VERSION";
-	visit_property_string(prop);
+	visit_property_string("VERSION", prop);
 }
 
 void XmlVisitor::visit_cal_scale(const PropertyCalScale& prop)
 {
-	out << "<CALSCALE";
-	visit_property_string(prop);
+	visit_property_string("CALSCALE", prop);
 }
 
-void XmlVisitor::visit_property_date_time(const PropertyDateTime& prop)
+void XmlVisitor::visit_attendee(const PropertyAttendee& prop)
+{
+	visit_property_string("ATTENDEE", prop);
+}
+
+void XmlVisitor::visit_property_date_time(const std::string& name, const PropertyDateTime& prop)
 {
 	// TODO
-	out << " value=\"" << prop.get_value() << "\"/>";
+	out << "<" << name << " value=\"" << prop.get_value() << "\">";
+	visit_property(prop);
+	out << "</" << name << ">";
 }
 
 void XmlVisitor::visit_dt_start(const PropertyDtStart& prop)
 {
-	out << "<DTSTART";
-	visit_property_date_time(prop);
+	visit_property_date_time("DTSTART", prop);
 }
 
 void XmlVisitor::visit_dt_stamp(const PropertyDtStamp& prop)
 {
-	out << "<DTSTAMP";
-	visit_property_date_time(prop);
+	visit_property_date_time("DTSTAMP", prop);
 }
 
 void XmlVisitor::visit_created(const PropertyCreated& prop)
 {
-	out << "<CREATED";
-	visit_property_date_time(prop);
+	visit_property_date_time("CREATED", prop);
 }
 
 void XmlVisitor::visit_last_modified(const PropertyLastModified& prop)
 {
-	out << "<LAST-MODIFIED";
-	visit_property_date_time(prop);
+	visit_property_date_time("LAST-MODIFIED", prop);
 }
 
 void XmlVisitor::visit_dt_end(const PropertyDtEnd& prop)
 {
-	out << "<DTEND";
-	visit_property_date_time(prop);
+	visit_property_date_time("DTEND", prop);
 }
 
-void XmlVisitor::visit_property_int(const PropertyInt& prop)
+void XmlVisitor::visit_property_int(const std::string& name, const PropertyInt& prop)
 {
-	out << " value=\"" << prop.get_value() << "\"/>";
+	out << "<" << name <<" value=\"" << prop.get_value() << "\">";
+	visit_property(prop);
+	out << "</" << name << ">";
 }
 
 void XmlVisitor::visit_sequence(const PropertySequence& prop)
 {
-	out << "<SEQUENCE";
-	visit_property_int(prop);
+	visit_property_int("SEQUENCE", prop);
 }
 
 }

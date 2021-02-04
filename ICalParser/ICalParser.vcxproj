@@ -147,6 +147,9 @@
     <ClCompile Include="ComponentParser.cpp" />
     <ClCompile Include="Datatype.ixx" />
     <ClCompile Include="DateTime.cpp" />
+    <ClCompile Include="Property.cpp" />
+    <ClCompile Include="PropertyHelper.cpp" />
+    <ClCompile Include="PropertyAttendee.cpp" />
     <ClCompile Include="PropertyCalScale.cpp" />
     <ClCompile Include="PropertyCreated.cpp" />
     <ClCompile Include="PropertyDateTime.cpp" />

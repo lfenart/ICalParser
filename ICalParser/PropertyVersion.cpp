@@ -4,8 +4,8 @@ import std.core;
 
 namespace ast {
 
-PropertyVersion::PropertyVersion(const std::string& val)
-	: PropertyString(val)
+PropertyVersion::PropertyVersion(const std::string& val, const std::map<std::string, std::string>& params)
+	: PropertyString(val, params)
 {
 }
 

@@ -11,12 +11,13 @@ ast::Node::uptr ComponentParser::parse(std::istream& input) const
 	ast::Component::uptr node = create_component();
 	std::string line;
 	for (;;) {
-		auto tokens = read_tokens(input);
-		if (!tokens.has_value()) {
+		auto prop = read_tokens(input);
+		if (!prop.has_value()) {
 			throw exception::UnexpectedEofError();
 		}
-		std::string token1 = tokens->first;
-		std::string token2 = tokens->second;
+		std::string token1 = prop->get_name();
+		std::string token2 = prop->get_value();
+		auto params = prop->get_parameters();
 		if (token1 == "END") {
 			if (token2 != get_name()) {
 				throw exception::UnexpectedComponentEndError(token2);
@@ -33,7 +34,7 @@ ast::Node::uptr ComponentParser::parse(std::istream& input) const
 			}
 		} else {
 			if (get_properties().contains(token1)) {
-				ast::Property::uptr child = get_factory().create_property(token1, token2);
+				ast::Property::uptr child = get_factory().create_property(token1, token2, params);
 				node->add_property(std::move(child));
 			} else {
 				std::cerr << "Skipping unknown property: " << token1 << std::endl;

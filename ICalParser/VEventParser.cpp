@@ -14,6 +14,7 @@ VEventParser::VEventParser()
 	add_property("SUMMARY");
 	add_property("LOCATION");
 	add_property("UID");
+	add_property("ATTENDEE");
 
 	// PropertyDate
 	add_property("DTSTART");

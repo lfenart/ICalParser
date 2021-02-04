@@ -113,6 +113,10 @@ void RoomOccupancyVisitor::visit_cal_scale(const PropertyCalScale& prop)
 {
 }
 
+void RoomOccupancyVisitor::visit_attendee(const PropertyAttendee& prop)
+{
+}
+
 void RoomOccupancyVisitor::visit_property_date_time(const PropertyDateTime& prop)
 {
 }

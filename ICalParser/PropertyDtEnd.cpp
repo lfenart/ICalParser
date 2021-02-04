@@ -4,8 +4,8 @@ import std.core;
 
 namespace ast {
 
-PropertyDtEnd::PropertyDtEnd(const datatype::DateTime& val)
-	: PropertyDateTime(val)
+PropertyDtEnd::PropertyDtEnd(const datatype::DateTime& val, const std::map<std::string, std::string>& params)
+	: PropertyDateTime(val, params)
 {
 }
 

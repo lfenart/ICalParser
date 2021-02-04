@@ -174,5 +174,14 @@
     <ClCompile Include="PropertyDateTime.cpp">
       <Filter>Fichiers sources\ast\property\date</Filter>
     </ClCompile>
+    <ClCompile Include="PropertyAttendee.cpp">
+      <Filter>Fichiers sources\ast\property\string</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyHelper.cpp">
+      <Filter>Fichiers sources\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="Property.cpp">
+      <Filter>Fichiers sources\ast</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

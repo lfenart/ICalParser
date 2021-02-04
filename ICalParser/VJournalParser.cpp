@@ -11,6 +11,7 @@ VJournalParser::VJournalParser()
 	add_property("DESCRIPTION");
 	add_property("SUMMARY");
 	add_property("UID");
+	add_property("ATTENDEE");
 
 	// PropertyDate
 	add_property("DTSTART");

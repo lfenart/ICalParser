@@ -13,6 +13,20 @@ export class UnknownComponentParser;
 export class VEventParser;
 export class VAlarmParser;
 
+class PropertyHelper {
+public:
+	PropertyHelper(std::string, std::string, std::map<std::string, std::string>);
+
+	std::string get_name() const;
+	std::string get_value() const;
+	std::map<std::string, std::string> get_parameters() const;
+
+private:
+	std::string name;
+	std::string value;
+	std::map<std::string, std::string> parameters;
+};
+
 class Parser {
 public:
 	virtual ~Parser() = default;
@@ -22,7 +36,7 @@ public:
 protected:
 	const ast::NodeFactory& get_factory() const;
 	void parse_unknown_component(std::istream&, const std::string&) const;
-	std::optional<std::pair<std::string, std::string>> read_tokens(std::istream&) const;
+	std::optional<PropertyHelper> read_tokens(std::istream&) const;
 
 private:
 	ast::NodeFactory factory;

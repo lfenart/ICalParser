@@ -4,8 +4,8 @@ import std.core;
 
 namespace ast {
 
-PropertyLocation::PropertyLocation(const std::string& val)
-	: PropertyString(val)
+PropertyLocation::PropertyLocation(const std::string& val, const std::map<std::string, std::string>& params)
+	: PropertyString(val, params)
 {
 }
 

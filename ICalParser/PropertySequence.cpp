@@ -4,8 +4,8 @@ import std.core;
 
 namespace ast {
 
-PropertySequence::PropertySequence(long long val)
-	: PropertyInt(val)
+PropertySequence::PropertySequence(long long val, const std::map<std::string, std::string>& params)
+	: PropertyInt(val, params)
 {
 }
 

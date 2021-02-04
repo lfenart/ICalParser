@@ -25,6 +25,7 @@ export class PropertyMethod;
 export class PropertyProdId;
 export class PropertyVersion;
 export class PropertyCalScale;
+export class PropertyAttendee;
 
 export class PropertyDate;
 export class PropertyDtStart;
@@ -56,8 +57,12 @@ class Property : public Node {
 public:
 	using sptr = std::shared_ptr<Property>;
 	using uptr = std::unique_ptr<Property>;
-
 	virtual ~Property() = default;
+
+	const std::map<std::string, std::string>& get_params() const;
+
+protected:
+	std::map<std::string, std::string> params;
 };
 
 class PropertyString : public Property {
@@ -65,7 +70,7 @@ public:
 	using sptr = std::shared_ptr<PropertyString>;
 	using uptr = std::unique_ptr<PropertyString>;
 
-	PropertyString(const std::string&);
+	PropertyString(const std::string&, const std::map<std::string, std::string>&);
 	virtual ~PropertyString() = default;
 
 	const std::string& get_value() const;
@@ -79,7 +84,7 @@ public:
 	using sptr = std::shared_ptr<PropertyDescription>;
 	using uptr = std::unique_ptr<PropertyDescription>;
 
-	PropertyDescription(const std::string&);
+	PropertyDescription(const std::string&, const std::map<std::string, std::string>&);
 	virtual ~PropertyDescription() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
@@ -90,7 +95,7 @@ public:
 	using sptr = std::shared_ptr<PropertyLocation>;
 	using uptr = std::unique_ptr<PropertyLocation>;
 
-	PropertyLocation(const std::string&);
+	PropertyLocation(const std::string&, const std::map<std::string, std::string>&);
 	virtual ~PropertyLocation() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
@@ -101,7 +106,7 @@ public:
 	using sptr = std::shared_ptr<PropertyUid>;
 	using uptr = std::unique_ptr<PropertyUid>;
 
-	PropertyUid(const std::string&);
+	PropertyUid(const std::string&, const std::map<std::string, std::string>&);
 	virtual ~PropertyUid() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
@@ -112,7 +117,7 @@ public:
 	using sptr = std::shared_ptr<PropertySummary>;
 	using uptr = std::unique_ptr<PropertySummary>;
 
-	PropertySummary(const std::string&);
+	PropertySummary(const std::string&, const std::map<std::string, std::string>&);
 	virtual ~PropertySummary() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
@@ -123,7 +128,7 @@ public:
 	using sptr = std::shared_ptr<PropertyMethod>;
 	using uptr = std::unique_ptr<PropertyMethod>;
 
-	PropertyMethod(const std::string&);
+	PropertyMethod(const std::string&, const std::map<std::string, std::string>&);
 	virtual ~PropertyMethod() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
@@ -134,7 +139,7 @@ public:
 	using sptr = std::shared_ptr<PropertyProdId>;
 	using uptr = std::unique_ptr<PropertyProdId>;
 
-	PropertyProdId(const std::string&);
+	PropertyProdId(const std::string&, const std::map<std::string, std::string>&);
 	virtual ~PropertyProdId() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
@@ -145,7 +150,7 @@ public:
 	using sptr = std::shared_ptr<PropertyVersion>;
 	using uptr = std::unique_ptr<PropertyVersion>;
 
-	PropertyVersion(const std::string&);
+	PropertyVersion(const std::string&, const std::map<std::string, std::string>&);
 	virtual ~PropertyVersion() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
@@ -156,8 +161,19 @@ public:
 	using sptr = std::shared_ptr<PropertyCalScale>;
 	using uptr = std::unique_ptr<PropertyCalScale>;
 
-	PropertyCalScale(const std::string&);
+	PropertyCalScale(const std::string&, const std::map<std::string, std::string>&);
 	virtual ~PropertyCalScale() = default;
+
+	void accept(std::shared_ptr<Visitor>) const override;
+};
+
+class PropertyAttendee : public PropertyString {
+public:
+	using sptr = std::shared_ptr<PropertyAttendee>;
+	using uptr = std::unique_ptr<PropertyAttendee>;
+
+	PropertyAttendee(const std::string&, const std::map<std::string, std::string>&);
+	virtual ~PropertyAttendee() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
 };
@@ -167,7 +183,7 @@ public:
 	using sptr = std::shared_ptr<PropertyDate>;
 	using uptr = std::unique_ptr<PropertyDate>;
 
-	PropertyDateTime(const datatype::DateTime&);
+	PropertyDateTime(const datatype::DateTime&, const std::map<std::string, std::string>&);
 	virtual ~PropertyDateTime() = default;
 
 	const datatype::DateTime& get_value() const;
@@ -181,7 +197,7 @@ public:
 	using sptr = std::shared_ptr<PropertyDtStart>;
 	using uptr = std::unique_ptr<PropertyDtStart>;
 
-	PropertyDtStart(const datatype::DateTime&);
+	PropertyDtStart(const datatype::DateTime&, const std::map<std::string, std::string>&);
 	virtual ~PropertyDtStart() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
@@ -192,7 +208,7 @@ public:
 	using sptr = std::shared_ptr<PropertyDtStamp>;
 	using uptr = std::unique_ptr<PropertyDtStamp>;
 
-	PropertyDtStamp(const datatype::DateTime&);
+	PropertyDtStamp(const datatype::DateTime&, const std::map<std::string, std::string>&);
 	virtual ~PropertyDtStamp() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
@@ -203,7 +219,7 @@ public:
 	using sptr = std::shared_ptr<PropertyDtEnd>;
 	using uptr = std::unique_ptr<PropertyDtEnd>;
 
-	PropertyDtEnd(const datatype::DateTime&);
+	PropertyDtEnd(const datatype::DateTime&, const std::map<std::string, std::string>&);
 	virtual ~PropertyDtEnd() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
@@ -214,7 +230,7 @@ public:
 	using sptr = std::shared_ptr<PropertyCreated>;
 	using uptr = std::unique_ptr<PropertyCreated>;
 
-	PropertyCreated(const datatype::DateTime&);
+	PropertyCreated(const datatype::DateTime&, const std::map<std::string, std::string>&);
 	virtual ~PropertyCreated() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
@@ -225,7 +241,7 @@ public:
 	using sptr = std::shared_ptr<PropertyLastModified>;
 	using uptr = std::unique_ptr<PropertyLastModified>;
 
-	PropertyLastModified(const datatype::DateTime&);
+	PropertyLastModified(const datatype::DateTime&, const std::map<std::string, std::string>&);
 	virtual ~PropertyLastModified() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
@@ -236,7 +252,7 @@ public:
 	using sptr = std::shared_ptr<PropertyInt>;
 	using uptr = std::unique_ptr<PropertyInt>;
 
-	PropertyInt(long long);
+	PropertyInt(long long, const std::map<std::string, std::string>&);
 	virtual ~PropertyInt() = default;
 
 	long long get_value() const;
@@ -250,7 +266,7 @@ public:
 	using sptr = std::shared_ptr<PropertySequence>;
 	using uptr = std::unique_ptr<PropertySequence>;
 
-	PropertySequence(long long);
+	PropertySequence(long long, const std::map<std::string, std::string>&);
 	virtual ~PropertySequence() = default;
 
 	void accept(std::shared_ptr<Visitor>) const override;
@@ -343,7 +359,7 @@ public:
 	VEvent::uptr create_vevent() const;
 	VJournal::uptr create_vjournal() const;
 
-	Property::uptr create_property(const std::string&, const std::string&) const;
+	Property::uptr create_property(const std::string&, const std::string&, const std::map<std::string, std::string>&) const;
 };
 
 class Visitor : public std::enable_shared_from_this<Visitor> {
@@ -364,6 +380,7 @@ public:
 	virtual void visit_prod_id(const PropertyProdId&) = 0;
 	virtual void visit_version(const PropertyVersion&) = 0;
 	virtual void visit_cal_scale(const PropertyCalScale&) = 0;
+	virtual void visit_attendee(const PropertyAttendee&) = 0;
 	virtual void visit_dt_start(const PropertyDtStart&) = 0;
 	virtual void visit_dt_stamp(const PropertyDtStamp&) = 0;
 	virtual void visit_dt_end(const PropertyDtEnd&) = 0;
@@ -385,9 +402,10 @@ public:
 	void visit_vevent(const VEvent&) override;
 	void visit_vjournal(const VJournal&) override;
 
-	void visit_property_string(const PropertyString&);
-	void visit_property_date_time(const PropertyDateTime&);
-	void visit_property_int(const PropertyInt&);
+	void visit_property(const Property&);
+	void visit_property_string(const std::string&, const PropertyString&);
+	void visit_property_date_time(const std::string&, const PropertyDateTime&);
+	void visit_property_int(const std::string&, const PropertyInt&);
 	void visit_description(const PropertyDescription&) override;
 	void visit_summary(const PropertySummary&) override;
 	void visit_location(const PropertyLocation&) override;
@@ -396,6 +414,7 @@ public:
 	void visit_prod_id(const PropertyProdId&) override;
 	void visit_version(const PropertyVersion&) override;
 	void visit_cal_scale(const PropertyCalScale&) override;
+	void visit_attendee(const PropertyAttendee&) override;
 	void visit_dt_start(const PropertyDtStart&) override;
 	void visit_dt_stamp(const PropertyDtStamp&) override;
 	void visit_dt_end(const PropertyDtEnd&) override;
@@ -431,6 +450,7 @@ public:
 	void visit_prod_id(const PropertyProdId&) override;
 	void visit_version(const PropertyVersion&) override;
 	void visit_cal_scale(const PropertyCalScale&) override;
+	void visit_attendee(const PropertyAttendee&) override;
 	void visit_dt_start(const PropertyDtStart&) override;
 	void visit_dt_stamp(const PropertyDtStamp&) override;
 	void visit_dt_end(const PropertyDtEnd&) override;

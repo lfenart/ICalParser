@@ -18,8 +18,8 @@ int main(int argc, char* argv[])
 			xml_fout.open(argv[2]);
 			xml_out = &xml_fout;
 		}
-		//auto visitor = std::make_shared<ast::XmlVisitor>(*xml_out);
-		auto visitor = std::make_shared<ast::RoomOccupancyVisitor>(*xml_out);
+		auto visitor = std::make_shared<ast::XmlVisitor>(*xml_out);
+		//auto visitor = std::make_shared<ast::RoomOccupancyVisitor>(*xml_out);
 		node->accept(visitor);
 	} catch (std::runtime_error e) {
 		std::cerr << "Error: " << e.what() << std::endl;

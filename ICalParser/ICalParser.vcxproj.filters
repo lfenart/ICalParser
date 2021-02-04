@@ -183,5 +183,8 @@
     <ClCompile Include="Property.cpp">
       <Filter>Fichiers sources\ast</Filter>
     </ClCompile>
+    <ClCompile Include="TeacherServiceVisitor.cpp">
+      <Filter>Fichiers sources\ast\visitor</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

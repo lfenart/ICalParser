@@ -168,6 +168,7 @@
     <ClCompile Include="PropertyUid.cpp" />
     <ClCompile Include="PropertyVersion.cpp" />
     <ClCompile Include="RoomOccupancyVisitor.cpp" />
+    <ClCompile Include="TeacherServiceVisitor.cpp" />
     <ClCompile Include="UnknownPropertyError.cpp" />
     <ClCompile Include="VAlarm.cpp" />
     <ClCompile Include="VAlarmParser.cpp" />

@@ -42,6 +42,7 @@ export class NodeFactory;
 export class Visitor;
 export class XmlVisitor;
 export class RoomOccupancyVisitor;
+export class TeacherServiceVisitor;
 
 class Node {
 public:
@@ -464,6 +465,45 @@ private:
 	std::vector<std::string> locations;
 	std::optional<datatype::DateTime> start;
 	std::optional<datatype::DateTime> end;
+};
+
+class TeacherServiceVisitor : public Visitor {
+public:
+	TeacherServiceVisitor(std::ostream&);
+	virtual ~TeacherServiceVisitor() = default;
+
+	void visit_ical(const ICal&) override;
+
+	void visit_component(const Component&);
+	void visit_vcalendar(const VCalendar&) override;
+	void visit_valarm(const VAlarm&) override;
+	void visit_vevent(const VEvent&) override;
+	void visit_vjournal(const VJournal&) override;
+
+	void visit_property_string(const PropertyString&);
+	void visit_property_date_time(const PropertyDateTime&);
+	void visit_property_int(const PropertyInt&);
+	void visit_description(const PropertyDescription&) override;
+	void visit_summary(const PropertySummary&) override;
+	void visit_location(const PropertyLocation&) override;
+	void visit_uid(const PropertyUid&) override;
+	void visit_method(const PropertyMethod&) override;
+	void visit_prod_id(const PropertyProdId&) override;
+	void visit_version(const PropertyVersion&) override;
+	void visit_cal_scale(const PropertyCalScale&) override;
+	void visit_attendee(const PropertyAttendee&) override;
+	void visit_dt_start(const PropertyDtStart&) override;
+	void visit_dt_stamp(const PropertyDtStamp&) override;
+	void visit_dt_end(const PropertyDtEnd&) override;
+	void visit_created(const PropertyCreated&) override;
+	void visit_last_modified(const PropertyLastModified&) override;
+	void visit_sequence(const PropertySequence&) override;
+
+private:
+	std::ostream& out;
+	std::map<std::string, std::set<std::string>> teacher_subjects;
+	std::vector<std::string> teachers;
+	std::optional<std::string> subject;
 };
 
 }
